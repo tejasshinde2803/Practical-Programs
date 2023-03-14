@@ -1,0 +1,1526 @@
+						Advanced Web Technologies Practical Programs
+1) Write a PHP script to accept the details of Employee (EName, Designation, Department Gender, and Salary) and display it on next page.
+
+Employee.php
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Employee Details</title>
+</head>
+<body>
+	<form action="Welcome.php" method="POST">
+	<table width="30%" cellpadding="0" cellpadding="5" border="1">
+		<tr>
+			<td>Name:</td>
+			<td><input type="text" name="ename"></td>
+		</tr>
+		<tr>
+			<td>Designation:</td>
+			<td><input type="text" name="designation"></td>
+		</tr>
+		<tr>
+			<td>Department</td>
+			<td><select name="Department">
+				<option value="">---Select---</option>
+				<option value="Income Tax">Income Tax</option>
+				<option value="Income Tax">Sales Tax</option>
+				<option value="Income Tax">Atomic energy</option>
+				<option value="Income Tax">Biotechnology</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Gender:</td>
+			<td><input type="radio" name="gender" value="male">Male
+			<input type="radio" name="gender" value="female">Female</td>
+		</tr>
+		<tr>
+			<td>Salary:</td>
+			<td><input type="text" name="salary"></td>
+		</tr>
+		<tr>
+		<td><input type="submit" name="submit" value="Submit"></td>
+		<td><input type="reset" name="reset" value="Reset"></td>
+	</tr>
+	</table>
+</body>
+</html>
+
+Welcome.php
+<table width="50%" cellpadding="0" cellpadding="5" border="1">
+<tr>
+	<td>Name</td>
+	<td><?php echo $_POST['ename']; ?></td>
+</tr>
+<tr>
+	<td>Designation:</td>
+	<td><?php echo $_POST['designation']; ?></td>
+</tr>
+<tr>
+	<td>Department</td>
+	<td><?php echo $_POST['Department']; ?></td>
+</tr>
+<tr>
+	<td>Gender:</td>
+	<td><?php echo $_POST['gender']; ?></td>
+</tr>
+<tr>
+	<td>Salary:</td>
+	<td><?php echo $_POST['salary']; ?></td>
+</tr>
+</table>
+
+
+2) Write a PHP script to display a Multiplication table in tabular format. Design HTML page to accept a value
+
+table.html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Multiplication Table</title>
+</head>
+<body>
+	<form action="table.php" method="POST">
+     <table align="center" border="1" cellpadding="8" cellpadding="0" width="50%">
+		<tr><td colspan="2" align="center" bgcolor="#8BFBE6"><h2>Multiplication Table</h2>
+			<tr>
+				<td><b>Enter Number:</b></td>
+				<td><input type="text" name="numbers" value="" /></td>
+			</tr>
+			<tr>
+		<td colspan="2" align="center"><input type="submit" name="submit" value="Submit"></td>
+	</tr>
+	</table>
+</body>
+</html>
+
+table.php
+<?php
+if($_POST['numbers']!=' ')
+{
+$numbers=$_POST['numbers'];
+echo "<table border=1/>";
+for($r=1;$r<=10;$r++) 
+{ 
+echo ('<tr>');
+echo ('<td>' .$r*$numbers. '</td>');
+echo ('</tr');
+}
+echo "<table>";
+}
+?>
+
+						   (Self-Processing Form)
+
+1) Write a PHP program to create a simple calculator that can accept two numbers and perform operations like add, subtract, multiplication and divide (using Self Processing form) 
+
+Arith.html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Arithmetic Operation</title>
+</head>
+<body>
+	<form action="Cal.php" method="GET">
+	<h1>Arithmetic Operation</h1>
+	Enter 1st No:<input type="text" name="a"/><br>
+	Enter 2st No:<input type="text" name="b"/><br>
+
+	Operation::<br>
+	<input type="radio" name="c" value="1">Addition<br>
+	<input type="radio" name="c" value="2">Substraction<br>
+	<input type="radio" name="c" value="3">Multiplication<br>
+	<input type="radio" name="c" value="4">Division<br>
+
+	<input type="submit" name="submit" value="Submit">
+	<input type="reset" name="reset" value="Reset">
+</body>
+</html>
+
+Cal.php
+<?php
+$n1 = $_GET['a'];
+$n2 = $_GET['b'];
+$ch = $_GET['c'];
+
+	if ($ch=="1") {
+	$c = $n1 + $n2;
+	echo "addition is: $c";
+	}
+	
+	else if ($ch==2) {
+	$c = $n1 - $n2;
+	echo "substraction is: $c";
+	}
+
+	else if ($ch==3) {
+	$c = $n1 * $n2;
+	echo "multiplication is: $c";
+	}
+
+	else if ($ch==4) {
+	$c = $n1 / $n2;
+	echo "Division is: $c";
+    }
+?>
+
+
+2) Create student registration form and display details in the next page. (Use sticky form concept).
+
+StudentReg.php
+<html>
+<body>
+<table border=1>
+<tr><th colspan=2>
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method=post>
+<tr><td>Enter Name</td><td><input type="text" name="nm" value="<?php if(isset($_POST['nm']))echo $_POST['nm']?>"></td></tr >
+<tr><td>Enter Roll No</td><td><input type="text" name="rno" value="<?php if(isset($_POST['rno']))echo $_POST['rno']?>"></td></tr>
+<tr><td>Enter State</td><td><input type="text" name="st" value="<?php if(isset($_POST['st']))echo $_POST['st']?>"> </td></tr>
+<tr><td>Enter City</td><td><input type="text" name="ct" value="<?php if(isset($_POST['ct']))echo $_POST['ct']?>"></td></tr>
+<tr><td>Enter Percentage</td><td><input type="text" name="per" value="<?php if(isset($_POST['per']))echo $_POST['per']?>"></td></tr>
+<tr><td><input type="submit" value="Submit" name="submit"></td>
+<td><input type="reset" value="Reset"></td></tr>
+</form>
+</table>
+<?php
+if(isset($_POST['submit']))
+{
+$nm=$_POST['nm'];
+$rno=$_POST['rno'];
+$st=$_POST['st'];
+$ct=$_POST['ct'];
+$perc=$_POST['per'];
+}
+if((!empty($nm)) && (!empty($rno)) && (!empty($st)) && (!empty($ct)) && (!empty($perc)))
+{
+setcookie('nm',$nm);
+setcookie('rno',$rno);
+setcookie('st',$st);
+setcookie('ct',$ct);
+setcookie('perc',$perc);
+header("location:Slip14_1.php");
+}
+?>
+</body>
+</html>
+
+Slip14_1.php
+<?php
+echo "Your name is $_COOKIE[nm] </br>";
+echo "Your Roll No Is : $_COOKIE[rno]</br>";
+echo "Your State Is : $_COOKIE[st]</br>";
+echo "Your City Is : $_COOKIE[ct]</br>";
+echo "Your Percentage Is : $_COOKIE[perc]</br>";
+?>
+
+
+3) Write a PHP Script to Upload the file and display its information.(use $_FILES). 
+
+FileUpload.html
+<html>
+<body>
+<form method=post action="upload.php" enctype="multipart/form-data">
+File Name:<input type=file name=file><br>
+<input type=submit name=submit value="upload">
+</form>
+</body>
+</html>
+
+upload.php
+<?php
+	echo "file name:".$_FILES['file']['name']."<br>";
+	$f=$_FILES['file']['size'];
+	echo "Size:".$f."<br>";
+	echo "file name on Server:".$_FILES['file']['tmp_name']."<br>";
+	echo "file error:".$_FILES['file']['error']."<br>";
+	print_r($_FILES);
+?>
+
+
+
+
+4) Write a PHP Script to display Server information in table format (Use $_SERVER).
+
+<?php
+	echo"<table border=1>";
+	foreach ($_SERVER as $K => $V) {
+		echo "<tr><td>".$K. "</td><td>".$V. "</td></tr>";
+	}
+	echo"</table>";
+?> 
+
+
+5) Write a PHP script to accept a string and then display each word of string in reverse order. (use concept of self-processing form)
+
+<html>
+<head>
+<title> processing form</title>
+</head>
+<body>
+<form action= "<?php $_SERVER['PHP_SELF']?>" method="get">
+Enter Name<input type="text" name="t1">
+<input type="submit" name="submit">
+</form>
+</body>
+</html>
+<?php
+if(isset($_GET['submit']))
+{
+$na=$_GET['t1'];
+echo strrev($na);
+}
+?>
+
+
+6) Write a PHP program to accept two string from user and check whether entered strings are matching or not. ( use sticky form concept)
+
+<html>
+    <body>
+        <form method=post action="<?php echo $_SERVER['PHP_SELF']?>">
+        <fieldset>
+            <legend>Enter Strings in the text Boxes!</legend>
+
+            <p><b>First String:</b><input type=text name=s1 value="<?php if(isset($_POST['s1'])) echo $_POST['s1'];?>"></p>
+            <p><b>Second String:</b><input type=text name=s2 value="<?php if(isset($_POST['s2'])) echo $_POST['s2'];?>"></p>
+
+        </fieldset>
+        <div align=center>
+        <input type=Submit name=Submit value="Match String">
+</div>
+<input type="hidden" name=Submit value=true>
+</form>
+
+<?php
+if(isset($_POST['Submit'])){
+    $s1=$_POST['s1'];
+    $s2=$_POST['s2'];
+    if(strcmp($s1,$s2)==0){
+        echo "<br><b>Matching</b> ";
+    }
+    else{
+        echo "<br><b> Not Matching </b>";
+    }
+}
+?>
+</body>
+</html>
+
+7) Create a login form with a username and password. Once the user logs in, the second form should be displayed to accept user details (name, city, phoneno). If the user doesn’t enter information within a specified time limit, expire his session and give a warning otherwise Display Details($_SESSION).
+
+slip_4.html
+<html>
+<body>
+<form action="slip_4-1.php" method="post">
+<center>
+	<h2> Enter Username: <input type="text" name="name"></h2>
+	<h2> Enter Password: <input type="text" name="pwd"></h2>
+	<input type="submit" value="Login">
+</center>
+</form>
+</body>
+</html>
+
+slip_4-1.php
+<?php
+session_start();
+$t=date("1,d-m-y h:i:s",time()+20);
+
+if($_REQUEST['name']=='xyz'&& $_REQUEST['pwd']=='xyz')
+{
+	?>
+	<html>
+	<body>
+		<h1><u><center>Enter Student details</center></u></h1>
+		<form action="slip_4-2.php" method=get>
+			<input type='hidden' name='etime' value="<?php echo $t?>">
+			<h2> Enter Name: <input type=textbox name=uname></h2><br>
+			<h2> Enter City: <input type=textbox name=city></h2><br>
+			<h2> Enter Phone No: <input type=textbox name=pno></h2><br>
+			<input type=submit name=submit value=DISPLAY>
+		</form>
+	</body>
+	</html>
+	<?php
+}
+else echo "<center><h1>Invalid Username Or Password</h1></center>"
+?>
+
+slip_4-2.php
+<?php
+session_start();
+$t=$_REQUEST['etime'];
+$exp=date("1,d-m-y h:i:s",time());
+
+if($t<$exp)
+echo "<center><h1>Page Time Expired</h1></center>";
+else
+{
+	echo"<center><h2>Name:".$_REQUEST['uname']."</h2></center>";
+	echo"<center><h2>City:".$_REQUEST['city']."</h2></center>";
+	echo"<center><h2>Phone No:".$_REQUEST['pno']."</h2></center>";
+	session_destroy();
+}
+?>	
+
+
+8) Write a PHP Script create login form and validate it (Use database and Sticky form concept)
+home.php
+<?php
+echo "Welcome to Home";
+?>
+
+login.html
+<DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+</head>
+<body>
+	<form action="login.php" method="post">
+		<h2>LOGIN</h2>
+		<?php if(isset($_GET['error'])){?>
+			<p class="error"><?php echo $_GET['error'];?></p>
+			<?php}?>
+		<label>User Name</label>
+		<input type="text" name="uname" placeholder="Username"><br>
+		<label>Password</label>
+
+		<input type="password" name="password" placeholder="password"><br>
+		<button type="submit">Login</button>
+	</form>		
+</body>
+</html>
+
+login.php
+<?php
+$hn="localhost";
+$un="root";
+$pass="";
+$db="slipdb";
+$link=mysqli_connect($hn,$un,$pass,$db);
+if(!$conn){
+	die('Connection Failed:'.$mysqli_error());
+}
+session_start();
+if(isset($_POST['uname'])&& isset($_POST['password'])){
+	function validate($data){
+		$data=trim($data);
+		$data=stripcslashes($data);
+		$data=htmlspecialchars($data);
+		return $data;
+	}
+	$uname = validate($_POST['uname']);
+	$pass = validate($_POST['password']);
+	if(empty($uname)){
+		header("Location:index.php?error=UserName is required");
+		exit();
+	}else if(empty($pass)){
+		header("Location:index.php?error=Password is required");
+		exit();
+	}else{
+		$sql="SELECT * FROM login WHERE user_name='$uname'AND password='$pass'";
+		$result = mysqli_query($conn,$sql);
+		if(mysqli_num_rows($result)===1){
+			$row=mysqli_fetch_assoc($result);
+			if($row['user_name']===$uname && $row['password']===$pass){
+				echo"Logged in!";
+				$_SESSION['user_name']=$row['user_name'];
+				$_SESSION['name']=$row['name'];
+				$_SESSION['id']=$row['id'];
+				header("Location:home.php");
+				exit();
+			}else{
+				header("Location:index.php?error=Incorrect User name or password");
+				exit();
+			}
+			
+		}
+	}
+}
+
+
+9) Create a form to accept employee details like name, address and mobile number. Once the employee information is accepted, then accept LIC information like policy_no, name, 
+premium. Display employee details and LIC details on next form.(use COOKIE)
+
+Q9.html
+<html>
+<body>
+<form action="Q-9-1.php" method="post">
+<center> <h2>Enter Employee Details :</h2>
+<table>
+<tr><td>Name : </td><td><input type="text" name="name"></td><tr>
+<tr><td>Address : </td><td><input type="text" name="addr"></td></tr>
+<tr><td>Mobile No : </td><td><input type="text" name="mob_no"></td></tr>
+<tr><td></td><td><input type="submit" value=Next></td></tr>
+</table>
+</center>
+</form>
+</body>
+</html>
+
+Q-9-1.php
+<html>
+<body>
+<form action="Q-9-2.php" method="post">
+<center>
+<h2>Enter LIC Information :</h2>
+<table>
+<tr><td>Policy no. : </td><td><input type="text" name="p_no"></td><tr>
+<tr><td>Policy Name : </td><td><input type="text" name="p_name"></td></tr>
+<tr><td>Premium : </td><td><input type="text" name="premium"></td></tr>
+<tr><td></td><td><input type="submit" value=Next></td></tr>
+</table>
+</center>
+</form>
+</body>
+</html>
+<?php
+setcookie("emp1",$_POST['name'],time()+3600);
+setcookie("emp2",$_POST['addr'],time()+3600);
+setcookie("emp3",$_POST['mob_no'],time()+3600);
+?>
+
+Q-9-2.php
+<?php
+echo "<h3>Employee Details</h3> ";
+echo "Name : ".$_COOKIE['emp1']."<br>";
+echo "Address : ".$_COOKIE['emp2']."<br>";
+echo "Mobile No. : ".$_COOKIE['emp3']."<br>";
+echo "Policy no. : ".$_POST['p_no']."<br>";
+echo "Policy Name : ".$_POST['p_name']."<br>";
+echo "Premium : ".$_POST['premium']."<br>";
+?>
+
+
+10) Create a form to accept student information (name, class, address). Once the student information is accepted, accept marks in next form (Java, PHP, ST, IT, pract1, and 
+project). Display the mark sheet for the student in the next form containing name, class, marks of the subject, total and percentage(Use $_COOKIE).
+
+Q10.html
+<html>
+<body>
+<form action="Q-10-1.php" method="post">
+<center>
+Enter Students information :
+<table>
+<tr><td>Name : </td><td><input type="text" name="name"></td><tr>
+<tr><td>Roll No : </td><td><input type="text" name="rno"></td></tr>
+<tr><td>Class : </td><td><input type="text" name="class"></td></tr>
+<tr><td></td><td><input type="submit" value=next></td></tr>
+</table>
+</center>
+</form>
+</body>
+</html>
+
+Q-10-1.php
+<html>
+<body>
+<form action="Q-10-2.php" method="post">
+<center>
+<h2>Enter Marks for Student:</h2>
+
+<table>
+<tr><td>Java: </td><td><input type="text" name="m1"></td><tr>
+<tr><td>PHP: </td><td><input type="text" name="m2"></td></tr>
+<tr><td>ST: </td><td><input type="text" name="m3"></td></tr>
+<tr><td>IT: </td><td><input type="text" name="m4"></td></tr>
+<tr><td>Pract1:</td><td><input type="text" name="m5"></td></tr>
+<tr><td>Project : </td><td><input type="text" name="m6"></td></tr>
+<tr><td><input type="submit" value=next></td></tr>
+</table>
+</center>
+</form>
+</body>
+</html>
+<?php setcookie("stud1",$_POST['name'],time()+3600);
+setcookie("stud2",$_POST['rno'],time()+3600);
+setcookie("stud3",$_POST['class'],time()+3600);
+?>
+
+Q-10-2.php
+<?php
+echo "<h3>Marksheet</h3> ";
+
+echo "Name : ".$_COOKIE['stud1']."\n";
+echo "Roll No:".$_COOKIE['stud2']."\n";
+echo "Class: ".$_COOKIE['stud3']."\n";
+echo "Java: ".$_POST['m1']."\n";
+echo "PHP: ".$_POST['m2']."\n";
+echo "ST: ".$_POST['m3']."\n";
+echo "IT: ".$_POST['m4']."\n";
+echo "pract1 : ".$_POST['m5']."\n";
+echo "Project : ".$_POST['m6']."\n";
+?>
+								XML					
+
+1) Write PHP script to create a CD catalog using XML file
+
+CD.xml
+<?xml version='1.0' encoding='UTF-8' ?>
+<CD>
+<cd type='music'>
+<name>silent_songs</name>
+<launch-date>5-6-2014</launch-date>
+<composer>A-R-Rehman</composer>
+</cd>
+
+<cd type='music'>
+<name>Hip-Hop</name>
+<launch-date>4-8-2011 </launch-date>
+<composer>Yo-Yo-Honey singh </composer>
+</cd>
+
+<cd type='music'>
+<name>love track </name>
+<launch-date>6-9-2000</launch-date>
+<composer>Arjit Singh</composer>
+</cd>
+</CD>
+
+CD.php
+<?php
+$xml=simplexml_load_file('CD.xml');
+var_dump($xml);
+?>
+
+
+2) Create a XML file which gives details of books available in “ABC Bookstore” from following categories
+ 	i)Technical
+  	ii)Cooking
+  	iii)YOGA 
+
+ABC.xml
+<?xml version="1.0" encoding="utf-8"?>
+<ABC_Bookstore>
+	<books category="Technical">
+		    <Book_no>1</Book_no>
+		    <Book_name>JAVA PROGRAMING</Book_name>
+			<Book_Author>aaa</Book_Author>
+			<price>100</price>
+			<year>1990</year>
+		
+	</books>
+	<books category="Cooking">
+			<Book_no>2</Book_no>
+		    <Book_name>HOME SCIENCE</Book_name>
+			<Book_Author>bbb</Book_Author>
+			<price>200</price>
+			<year>1950</year>
+	</books>
+	<books category="Yoga">
+			<Book_no>3</Book_no>
+		    <Book_name>FITNESS WORLD</Book_name>
+			<Book_Author>ccc</Book_Author>
+			<price>300</price>
+			<year>1980</year>
+	</books>
+</ABC_Bookstore>
+
+ABC.php
+<?php
+$xml=simplexml_load_file("ABC.xml") or die("cannnot load");
+$xmlstring=$xml->asXML();
+echo $xmlstring;
+?>			
+
+
+3) Write a PHP script to generate an XML in the following format
+<?xml version = “1.0” ?>
+<BookStore>
+<Books>
+<PHP>
+<title>Programming PHP</title>
+<publication>O’RELLY</publication>
+</PHP>
+<PHP>
+<title>Beginners PHP</title>
+<publication>WROX</publication>
+</PHP>
+</Books>
+</BookStore> 
+
+<html>
+<head>
+<title>Create XML</title>
+</head>
+<form action=Slip23.php method=get>
+Enter Book Title<input type=text name=txtTitle>
+Enter Publication<input type=text name=publ>
+<input type=submit value="submit">
+</form>
+</html>
+
+Slip23.php
+<?php
+echo "Links data posted";
+$ele=$_GET['txtTitle'];
+$att=$_GET['publ'];
+$xmltags="<?xml version=1.0?>";
+$xmltags=$xmltags."<Bookstore>";
+$xmltags=$xmltags."<Books>";
+$xmltags=$xmltags."<PHP>";
+$xmltags=$xmltags."<title>";
+$xmltags=$xmltags.$ele;
+$xmltags=$xmltags."</title>";
+$xmltags=$xmltags."<publication>";
+$xmltags=$xmltags.$att;
+$xmltags=$xmltags."</publication>";
+$xmltags=$xmltags."</PHP>";
+$xmltags=$xmltags."</Books>";
+$xmltags=$xmltags."</Bookstore>";
+if($fp=fopen("books.xml","w"))
+{
+if($wt=fwrite($fp,$xmltags))
+{
+echo "File created";
+}
+else
+echo "Not write";
+}
+else
+echo "Not opened";
+?>
+
+
+4) Write a PHP script to accept an .XML file which should comprise the following:
+<Book>
+<Book_PubYear>--------------</Book_PubYear>
+<Book_Title> --------------</Book_Title>
+<Book_Author> ---------------</Book_Author>
+</Book>
+Save the file as “Book.xml” 
+
+Book.xml
+<?xml version="1.0" encoding="utf-8"?>
+<ABCBOOK>
+        <Technical>
+        <BOOK>
+        <Book_PubYear>1981</Book_PubYear>
+        <Book_Title>ABC</Book_Title>
+        <Book_Author>XYZ</Book_Author>
+        </BOOK>
+        </Technical>     
+    <Cooking>
+        <BOOK>
+        <Book_PubYear>1988</Book_PubYear>
+        <Book_Title>PQR</Book_Title>
+        <Book_Author>OPQ</Book_Author>
+        </BOOK>
+    </Cooking>     
+    <Yoga>
+        <BOOK>
+        <Book_PubYear>1995</Book_PubYear>
+        <Book_Title>EFG</Book_Title>
+        <Book_Author>JKL</Book_Author>
+        </BOOK>
+    </Yoga>
+</ABCBOOK>
+
+Book.php
+<?php
+
+    $xml=simplexml_load_file("Book.xml") or die("cannnot load");
+   $xmlstring=$xml->asXML();
+   echo $xmlstring;
+
+?>
+
+
+5) Create an application that reads “Book.xml” file into simple XML object. Display attributes and elements.
+(Hint: Use simple_xml_load_file() function)
+
+Book.xml
+<?xml version="1.0"?>
+<BookStore>
+            <Books>
+                        <PHP>
+                                    <title>Programming PHP</title>
+                                    <publication>O’RELLY</publication>
+                        </PHP>
+                        <PHP>
+                                    <title>Beginners PHP</title>
+                                    <publication>WROX</publication>
+                        </PHP>
+            </Books>
+</BookStore>                    
+
+
+Book.php
+<?php
+$xml=simplexml_load_file("Book.xml") or die("eror:cannot create object");
+var_dump($xml);
+?>
+
+
+
+6) Write a script to solve following questions (Use “Book.xml” file)
+a) Create a DOM Document object and load this XML file.
+b) Get the output of this Document to the browser
+c) Save this [. XML] document in another format i.e. in [.doc]
+ d) Write a XML program to print the names of the books available in “Book.xml” file.
+
+Q6.xml
+<?xml version="1.0" encoding="utf-8"?>
+<ABCBOOK>
+        <Technical>
+        <BOOK>
+        <Book_PubYear>1981</Book_PubYear>
+        <Book_Title>ABC</Book_Title>
+        <Book_Author>XYZ</Book_Author>
+        </BOOK>
+        </Technical>     
+    <Cooking>
+        <BOOK>
+        <Book_PubYear>1988</Book_PubYear>
+        <Book_Title>PQR</Book_Title>
+        <Book_Author>OPQ</Book_Author>
+        </BOOK>
+    </Cooking>     
+    <Yoga>
+        <BOOK>
+        <Book_PubYear>1995</Book_PubYear>
+        <Book_Title>EFG</Book_Title>
+        <Book_Author>JKL</Book_Author>
+        </BOOK>
+    </Yoga>
+</ABCBOOK>
+
+Q6.php
+<?php       
+        $dom=new DomDocument();
+        $dom->load("Q6.xml");
+        print $dom->saveXML()."<br>";
+        print $dom->save("newfile.doc");
+?>
+
+
+
+7) Write a script to create “cricket.xml” file with multiple elements as shown below:
+ <CricketTeam>
+ <Team country=”India”>
+<player>____</player>
+<runs>______</runs>
+<wicket>____</wicket>
+ </Team>
+ </CricketTeam>
+ Write a script to add multiple elements in “cricket.xml” file of category, country=”Australia”.
+
+Cricket.php
+<?php
+$xml=simplexml_load_file('Cricket.xml') or die("Unable to load");
+$Team=$xml->addChild('Team');
+$Team->addAttribute('country','Australia');
+$player=$Team->addChild('player','Alex');
+$runs=$Team->addChild('runs','75');
+$wicket=$Team->addChild('wicket','2');
+header('content_type:text/xml');
+echo $xml->asXML();
+?>
+
+Cricket.xml
+<?xml version='1.0' encoding='UTF-8'?>
+<CricketTeam>
+	<Team country='India'>
+		<player>Sachin</player>
+		<runs>100</runs>
+		<wicket>4</wicket>
+	</Team>
+</CricketTeam>	
+
+8) Write a PHP script to accept an .XML file which should comprise the following: 
+<cricket> 
+<player>abc</player> 
+<runs>1000</runs> 
+<wickets>50</wickets> 
+<noofnotout>10</noofnotout> 
+</cricket> 
+For at least 5 players. 
+Display the details of players who have scored more than 1000 runs and at least 50 wickets
+
+Q8.xml
+<?xml version="1.0" encoding="utf-8"?>
+<cricketteam>
+<cricket>
+<player>MSD</player>
+<runs>1100</runs>
+<wickets>50</wickets>
+<noofnotout>10</noofnotout>
+</cricket>
+
+<cricket>
+<player>SACHIN</player>
+<runs>1200</runs>
+<wickets>40</wickets>
+<noofnotout>8</noofnotout>
+</cricket>
+
+<cricket>
+<player>VIRAT</player>
+<runs>1300</runs>
+<wickets>45</wickets>
+<noofnotout>9</noofnotout>
+</cricket>
+
+<cricket>
+<player>ROHIT</player>
+<runs>1200</runs>
+<wickets>55</wickets>
+<noofnotout>9</noofnotout>
+</cricket>
+
+<cricket>
+<player>RUTURAJ</player>
+<runs>1300</runs>
+<wickets>50</wickets>
+<noofnotout>10</noofnotout>
+</cricket>
+</cricketteam>
+
+Q8.php
+<?php
+$xml_data=simplexml_load_file("Q8.xml")or die("Error: Object Creation failure");
+foreach ($xml_data->children() as $data) {
+	$run=$data->runs;
+	$wic=$data->wickets;
+	$name=$data->player;
+	if($run>1000 && $wic>=50){
+		echo "<br>_________________";
+		echo "<br>".$name;
+		echo "<br>_________________";
+		echo "<br>".$wic;
+		echo "<br>_________________";
+		echo "<br>".$run;
+	}
+}
+?>
+
+9) Write a script to create XML file named “Course.xml”
+<Course>
+<Computer Science>
+<Student name>.......</Student name>
+<Class name>......</Class name>
+<percentage>.....</percentage>
+</Computer Science>
+</Course>
+Store the details of 5 students who are in TYBCA.
+
+Course.xml
+<?xml version="1.0" encoding="utf-8"?>
+<course>
+<computerscience>
+<studentname>TEJAS SHINDE</studentname>
+<classname>TYBCA</classname>
+<percentage>80.10</percentage>
+</computerscience>
+
+<computerscience>
+<studentname>SUYASH DANGE</studentname>
+<classname>TYBCA</classname>
+<percentage>80.20</percentage>
+</computerscience>
+
+<computerscience>
+<studentname>ROHIT KALE</studentname>
+<classname>TYBCA</classname>
+<percentage>80.30</percentage>
+</computerscience>
+
+<computerscience>
+<studentname></studentname>
+<classname>SWAPNIL KADAM</classname>
+<percentage>80.40</percentage>
+</computerscience>
+
+<computerscience>
+<studentname>ONKAR JAGTAP</studentname>
+<classname>TYBCA</classname>
+<percentage>80.50</percentage>
+</computerscience>
+</course>
+
+
+10) Write a script to create “vehicle.xml” file with multiple elements as given below
+<Vehicle>
+<Type = Two Wheeler>
+<Vehicler Name >-------- </Vehicle Name >
+<Company >--------- </Company>
+<Color>--------</Color>
+<Average>------</Average>
+</Type>
+</Vehicle>
+Also add Type = “Four Wheeler” and its elements
+
+Vehicle.xml
+<?xml version='1.0' encoding='UTF-8'?>
+<Vehicle>
+	<Vehicle1 Type = 'Two Wheeler'>
+		<Vehicle_Name>Activa</Vehicle_Name>
+		<Companay>HONDA</Companay>
+		<Color>White</Color>
+		<Average>50</Average>
+	</Vehicle1>
+</Vehicle>
+
+Vehicle.php
+<?php
+$xml=simplexml_load_file('Vehicle.xml') or die("Unable to load");
+$Vehicle=$xml->addChild('Vehicle');
+$Vehicle->addAttribute('Type','Four Wheeler');
+$Vehicle_Name=$Vehicle->addChild('Vehicle_Name','Creta');
+$Company=$Vehicle->addChild('Company','Hyundai');
+$Color=$Vehicle->addChild('Color','White');
+$Average=$Vehicle->addChild('Average','24.5');
+header('content_type:text/xml');
+echo $xml->asXML();
+?>
+
+
+							Database
+
+1) Write a PHP program to implement Create, Read, Update and Display operations on Teacher table with attributes(tid, tname, address, subject). (Use Radio Buttons)
+
+<HTML>
+<BODY>
+<FORM method=POST action="<?php echo $_SERVER['PHP_SELF']?>">
+	<b><h3>Perform operations on the TEACHER Table</b><BR>
+
+<input type="radio" name="choice" value="1">Create<BR>
+<input type="radio" name="choice" value="2">Insert<BR>
+<input type="radio" name="choice" value="3">Update<BR>
+<input type="radio" name="choice" value="4">Delete<BR>
+<input type="submit" name=submit value="Operations Perform"><BR>
+
+</FORM>
+<?php
+$hn="localhost";
+$db="Teach";
+$un="root";
+$psw="";
+$link=mysqli_connect($hn,$un,$psw,$db);
+if(isset($_POST['submit']))
+{
+	$ch=$_POST['choice'];
+	if($ch=='1')
+	{
+		if(!$link)
+		{
+			die('Connection failed:'.mysql_error());
+		}
+		$sql="create table teacher(tid int,tname varchar(10),addr varchar(20),sub varchar(10))";
+		if(mysqli_query($link,$sql)){
+			echo "Table created successfully";
+		}
+		else{
+			echo"Unable to perform";
+		    }
+		}
+		if($ch=='2'){
+			if(!$link){
+				die('Connection failed:'.mysql_error());
+			}
+			$sql="insert into teacher values('102','Prof.Bhilare','Malegaon','PHP')";
+			if(mysqli_query($link,$sql))
+			{
+				echo "Row inserted successfully";
+			}
+			else{
+				echo"Unable to perform";
+			}
+		}
+		if ($ch=='3') {
+		 	if (!$link) {
+		 		die('Connection failed:'.mysql_error());
+		 	}
+		 	$sql="update teacher SET addr='Baramati' where tid='101'";
+		 	if(mysqli_query($link,$sql)){
+		 		echo"Record Updated successfully";
+		 	}
+		 	else{
+		 		echo"Unable to perform";
+		 	}
+		 }
+		if($ch=='4'){
+			if(!$link){
+				die('Connection failed:'.mysql_error());
+			}
+			$sql="delete from teacher where tid='101'";
+			if(mysqli_query($link,$sql)){
+		 		echo"Record Deleted successfully";
+		 	}
+		 	else{
+		 		echo"Unable to perform";
+		 	}
+		} 
+}
+mysqli_close($link);
+?>
+</BODY>
+</HTML>
+
+2) Consider the following relational database: 
+Project (P_Group_No, Project_Title) 
+Student (Seat no, Name, Class, P_Group_No) 
+Write a PHP script to accept project title and display list of students those who are 
+working in a particular project. 
+
+Project.html
+<html>
+<body>
+<form method="get" action="Project.php">
+<div>
+<legend>Enter Project Tittle :</legend><br>
+<input type="text" name="pname"><br><br>
+</div><br>
+<div align="center">
+<input type="submit" value="Display">
+</div>
+</form>
+</body>
+</html>
+
+Project.php
+<?php
+$pname=$_GET['pname'];
+
+$hn="localhost";
+$un="root";
+$pass="";
+$db="Practical";
+
+$link=mysqli_connect($hn,$un,$pass,$db); 
+if(!$link)
+{
+die('Connection Failed:'.mysqli_error());
+}
+$sql  =  "select * from student1,project where Project_Title = '".$pname."' && student1.P_Group_No=project.P_Group_No";
+
+$res=mysqli_query($link,$sql);
+
+if(mysqli_num_rows($res)>0)
+{
+while($row=mysqli_fetch_assoc($res))
+{
+echo "Seat_No : ".$row['Seat no']."<br>"." Name : ".$row['Name']."<br>";
+echo"Class_Name : ".$row['Class']."<br>"." Project Group_No. : ".$row['P_Group_No']."<br>";
+}
+}
+else
+{
+echo"error";
+}
+mysqli_close($link);
+?>
+
+3) Consider the following entities and their relationships
+ Emp (emp_no,emp_name,address,phone,salary)
+ Dept (dept_no,dept_name,location)
+Emp-Dept are related with one-many relationship
+Create a RDB in 3NF for the above and solve following
+Using above database write a PHP script which will 
+a) Insert employee records in table 
+
+slip_20.html
+<html>
+<body>
+<form action="slip_20.php" method="get">
+
+<center>   <h2>Fill Employee Details : </h2>
+<table>
+<tr>  <td>Enter Employee No :</td>        <td><input type=text name=e_no></td>           </tr>
+<tr>  <td>Enter Employee Name :</td>    <td><input type=text name=e_nm></td>     </tr>
+<tr>  <td>Enter Address :</td>                  <td><input type=text name=add></td>       </tr>
+<tr>  <td>Enter Phone :</td>                     <td><input type=text name=ph></td>         </tr>
+<tr>  <td>Enter Salary :</td>                     <td><input type=text name=sal></td>        </tr>
+<tr>  <td>Enter Department no :</td>       <td><input type=text name=d_no></td>     </tr>
+<tr>  <td>Enter Department name :</td>  <td><input type=text name=d_nm></td>    </tr>
+<tr>  <td>Enter Location :</td>                  <td><input type=text name=loc></td>        </tr>
+<tr>  <td></td>                                           <td><input type=submit value=OK></td>   </tr>
+</table>
+</center>
+
+</form>
+</body>
+</html>
+
+slip_20.php
+<?php
+            $e_no   =   $_GET['e_no'];
+            $e_name   =   $_GET['e_nm'];
+            $add   =   $_GET['add'];
+            $ph   =   $_GET['ph'];
+            $sal   =   $_GET['sal'];
+            $d_no   =   $_GET['d_no'];
+            $d_nm   =   $_GET['d_nm'];
+            $loc   =   $_GET['loc'];
+
+            $hn="localhost";
+            $un="root";
+            $pass="";
+            $db="slipdb";
+
+$con =mysqli_connect($hn,$un,$pass,$db); 
+                  $q   =   mysqli_query($con,"insert into emp values e_no,'$e_name','$add',$ph,$sal)");  
+            $q1   =   mysqli_query($con,"insert into dept values($d_no,'$d_nm','$loc',$e_no)");
+           
+               mysqli_close();
+?>
+
+4) Consider the following entities and their relationships
+Doctor (doc_no, doc_name, address, city, area)
+Hospital (hosp_no, hosp_name, hosp_city)
+Doctor and Hospital are related with many-many relationship
+Create a RDB in 3 NF for the above and solve following
+Using above database, write a PHP script which accepts hospital name and print
+information about doctors visiting / working in that hospital in tabular format. Slip no:21
+
+slip_21.html
+<html>
+<body>
+<form action="slip_21.php" method="get">
+Enter the Name Of Hospital : <input type=text name=hosp><br>
+<input type=submit value=SUBMIT>
+</form>
+</body>
+<html>
+
+slip_21.php
+<?php
+            $hosp=$_GET['hosp'];
+
+            $con=mysql_connect("localhost","root","");
+            $d=mysql_select_db("bca_programs",$con);
+
+            $q=mysql_query("select doctor.doc_no,doc_name,address,city,area from doctor,hospital,doc_hosp where hosp_name='$hosp' and doc_hosp.doc_no=doctor.doc_no and doc_hosp.hosp_no=hospital.hosp_no");
+
+
+            echo "<tr><td>Doctor no--</td><td>Doctor Name--</td><td>Address--</td><td>city--</td><td>Area</td></tr>";
+            while($row=mysql_fetch_array($q))
+            {
+                                    echo "<br><tr><td>".$row[0]."   |   </td><td>".$row[1]."    |   </td><td>".$row[2]."   |     </td><td>".$row[3]."   |</td><td>".$row[4]."   |</td></tr>";
+            }
+            mysql_close();
+
+?>
+
+
+
+
+
+5) Consider the following entities and their relationships
+Movie (movie_no, movie_name, release_year)
+Actor (actor_no, name)
+Relationship between movie and actor is many – many with attribute rate in Rs. Create a
+RDB in 3 NF for the above and solve following Using above database, write PHP scripts
+for
+the following:
+(Hint: Create HTML form having two radio buttons)
+a) Accept actor name and display the names of the movies in which he has acted.
+b) Insert new movie information.
+Slip no:22
+
+Slip_22.html
+<html>
+<body>
+<form action="slip_22.php" method="get">
+
+<h3>Enter Actor Name : <input type=text name=nm>            </h3>
+<input type=radio name=a value=1>Display Movie Name<br><br>
+
+<h3>Enter movie no :<input type=text name=m_no> </h3>
+<h3>Enter movie name :<input type=text name=m_nm></h3>       
+<h3>Enter release year :<input type=text name=r_yr>           </h3>
+<h3>Enter actor no :<input type=text name=a_no>   </h3>
+<h3>Enter actor name :<input type=text name=a_nm>          </h3>
+<input type=radio name=a value=2>Insert New movie info<br><br>
+
+<input type=submit value=OK>
+</form>
+
+<div id="place"></div>
+</body>
+</html>
+
+slip_22.php
+<?php
+            $r  =  $_GET['a'];
+           
+            $con  =  mysql_connect("localhost","root","");
+            $d  =  mysql_select_db("bca_programs",$con);
+
+            if($r == 1)
+            {
+                        $actor_name  =  $_GET['nm'];
+                        $q  =  mysql_query("select m_name from movie,actor,movie_actor where movie.m_no=movie_actor.m_no and actor.a_no=movie_actor.a_no and a_name='$actor_name'");
+
+                        echo "<br>Movie Name </br>";
+                        while($row=mysql_fetch_array($q))
+                        {
+                                    echo $row[0]."<br>";
+                        }
+            }
+                        else if($r == 2)
+                        {
+                                    $m_no  =  $_GET['m_no'];
+                                    $m_name  =  $_GET['m_nm'];
+                                    $r_yr  =  $_GET['r_yr'];
+                                    $a_no  =  $_GET['a_no'];
+                                    $a_name  =  $_GET['a_nm'];
+
+                                    $q  =  mysql_query("insert into movie values($m_no,'$m_name',$r_yr)");
+                                    $q1  =  mysql_query("insert into actor values($a_no,'$a_name')");
+                                   
+echo "Value Inserted";
+                        }
+
+            mysql_close();
+
+?>
+
+
+							AJAX
+
+1. Write a PHP script using AJAX concept, to check user name and password are valid or Invalid (use database to store user name and password).
+
+Login.html
+
+<html>
+    <head>
+        <script type="text/javascript">
+            function validate()
+            {
+                uname=document.getElementById('t1').value;
+                pass=document.getElementById('t2').value;
+            }
+        </script>
+    </head>
+    <body>
+        <form accept="Login.php" method="get">
+            <fieldset>
+                <legend>Enter the Login Information:</legend>
+                Enter UserName:<input type=text name=t1 id=uname><span id=a></span><br>
+                <p>Enter Password:&nbsp; <input type=password name=t2 id=pass><br></p>
+                <div align="center">
+                    <input type=SUBMIT value=SUBMIT onClick=validate()>
+                </div>
+            </fieldset>
+        </form>
+    </body>
+</html>
+
+
+Login.php
+
+<?php
+$user1=$_GET['t1'];
+$pass1=$_GET['t2'];
+
+$hn="localhost";
+$un="root";
+$pass=""; 
+$db="slipdb";
+
+$link=mysqli_connect($hn,$un,$pass,$db,3307);
+if(!$link)
+{
+die('Connection Failed:'.$mysqli_error());
+}
+
+$sql="select * from Login1";
+$res=mysqli_query($link, $sql); 
+if(mysqli_num_rows($res)>0)
+{
+while($row=mysqli_fetch_assoc($res))
+{
+if((strcmp($user1, $row['User'])==0) && (strcmp($pass1, $row['Pass'])==0)) 
+echo"Login Successful";
+else
+echo"Invalid User Name and Password";
+}
+}
+else
+{
+echo"error";
+}
+mysqli_close($link); 
+?>
+
+
+
+2. Write Ajax program to get book author details from XML file when user click on button. Create XML file for storing details of book(title,author,year,price).
+
+Ajaxtext2.php
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>List of Book Authors Name</h2>
+<button type="button" onclick="booksnames()">
+Click Here to List Books Authors Name</button>
+<p id="p1"></p>
+<script>
+function booksnames() {
+var obj = new XMLHttpRequest();
+obj.open("GET", "Book.xml", true);
+obj.send();
+obj.onreadystatechange = function() {
+if (this.readyState== 4 && this.status == 200) {
+callxmlfile(this);
+}};}
+function callxmlfile(xml) {
+var k,z,xmlcontent, result;
+xmlcontent = xml.responseXML;
+result = "";
+z=xmlcontent.getElementsByTagName("AUTHOR");
+for (k = 0; k< z.length; k++) {
+result += z[k].childNodes[0].nodeValue + "<br>";
+}
+document.getElementById("p1").innerHTML = result;
+}
+</script>
+</body>
+</html>
+
+
+Book.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<BOOK>
+<COMPTER>
+<TITLE>ABCDE</TITLE>
+<AUTHOR>Jean</AUTHOR>
+<ISBN>12345</ISBN>
+<PUBLISHER>Penguin Random House India</PUBLISHER>
+<PRICE>1000</PRICE>
+<YEAR>2018</YEAR>
+</COMPTER>
+
+<COMPTER>
+<TITLE>ABCDEFG</TITLE>
+<AUTHOR>Steve</AUTHOR>
+<ISBN>54123</ISBN>
+<PUBLISHER>Rupa Publications</PUBLISHER>
+<PRICE>1500</PRICE>
+<YEAR>2018</YEAR>
+</COMPTER>
+
+<COMPTER>
+<TITLE>ABCDEFGHIJ</TITLE>
+<AUTHOR>Hennie</AUTHOR>
+<ISBN>12354</ISBN>
+<PUBLISHER>Jaico Publishing House</PUBLISHER>
+<PRICE>2000</PRICE>
+<YEAR>2018</YEAR>
+</COMPTER>
+</BOOK>
+
+
+3. Write PHP script to create a CD catalog using XML file.(Using Ajax)
+
+Cd.html
+
+<!DOCTYPE html>
+<html>
+<style>
+table,th, td {
+border: 1px solid black;
+border-collapse:collapse;
+}
+th,td {
+padding: 5px;
+}
+</style>
+<body>
+<h1>The XMLHttpRequest Object</h1>
+<button type="button" onclick="loadDoc()">Get my CD collection</button>
+<br><br>
+<table id="demo"></table>
+<script>
+function loadDoc() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (this.readyState== 4 && this.status==200){
+myFunction(this);
+}
+};
+xhttp.open("GET", "cd_catalog.xml", true);
+xhttp.send();
+}
+function myFunction(xml) {
+var i;
+var xmlDoc = xml.responseXML;
+var table="<tr><th>Artist</th><th>Title</th></tr>";
+var x = xmlDoc.getElementsByTagName("CD");
+for (i = 0; i <x.length; i++) {
+table += "<tr><td>"+x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +"<</td><td>"+x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +"</td></tr>";
+}
+document.getElementById("demo").innerHTML = table;
+}
+</script>
+</body>
+</html>
+
+
+cd_catalog.xml
+
+<?xml version='1.0' encoding='UTF-8'?>
+<CATALOG>
+<CD>
+<TITLE>Empire Burlesque</TITLE>
+<ARTIST>Bob Dylan</ARTIST>
+<COUNTRY>USA</COUNTRY>
+<COMPANY>Columbia</COMPANY>
+<PRICE>10.90</PRICE>
+<YEAR>1985</YEAR>
+</CD>
+
+<CD>
+<ARTIST>Gary Moore</ARTIST>
+<COUNTRY>UK</COUNTRY>
+<TITLE>Still got the blues</TITLE>
+<COMPANY>Virgin records</COMPANY>
+<PRICE>10.20</PRICE>
+<YEAR>1990</YEAR>
+</CD>
+
+<CD>
+<TITLE>Eros</TITLE>
+<ARTIST>Eros Ramazzotti</ARTIST>
+<COUNTRY>EU</COUNTRY>
+<COMPANY>BMG</COMPANY>
+<PRICE>9.90</PRICE>
+<YEAR>1997</YEAR>
+</CD>
+
+<CD>
+<TITLE>One night only</TITLE>
+<ARTIST>Bee Gees</ARTIST>
+<COUNTRY>UK</COUNTRY>
+<COMPANY>Polydor</COMPANY>
+<PRICE>10.90</PRICE>
+<YEAR>1998</YEAR>
+</CD>
+
+<CD>
+<TITLE>Sylvias Mother</TITLE>
+<ARTIST>Dr.Hook</ARTIST>
+<COUNTRY>UK</COUNTRY>
+<COMPANY>CBS</COMPANY>
+<PRICE>8.10</PRICE>
+<YEAR>1973</YEAR>
+</CD>
+
+<CD>
+<TITLE>Maggie May</TITLE>
+<ARTIST>Rod Stewart</ARTIST>
+<COUNTRY>UK</COUNTRY>
+<COMPANY>Pickwick</COMPANY>
+<PRICE>8.50</PRICE>
+<YEAR>1990</YEAR>
+</CD>
+</CATALOG>
