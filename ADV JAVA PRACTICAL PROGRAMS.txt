@@ -1,0 +1,1417 @@
+create table customer 
+( 
+cust_no number(5) primary key, 
+cust_name varchar(20), 
+cust_address varchar(30), 
+cust_city varchar(30) 
+); 
+insert into customer values(101,'balaji','rj road','pune');
+
+1)Write a JDBC program to display the details of employees (eno, ename, department, sal) whose department is BBA[CA].
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.ResultSet;
+public class Employee {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+		Statement stmt=con.createStatement();
+		String sql= "select * from employees where department='BBACA'";
+		
+		ResultSet rs=stmt.executeQuery(sql);
+		while(rs.next())
+		{
+			System.out.println("\n");
+			System.out.println("\t" +rs.getInt(1));
+			System.out.println("\t" +rs.getString(2));
+			System.out.println("\t" +rs.getString(3));
+			System.out.println("\t" +rs.getInt(4));
+		}
+	}
+	catch(Exception e) {
+		System.out.print(e);
+	 }
+   }
+}
+
+2) Write a java program to create Teacher table(TNo.TName, Sal, Desg) and insert a record in it.
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+public class Teacher {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+			Statement stmt=con.createStatement();
+			String sql= "insert into teacher values(2,'Patil Mam',50000,'HOD')";
+			stmt.executeUpdate(sql);
+			System.out.print("Values Inserted Sucessfully");
+	}
+	catch(Exception e) {
+		System.out.print(e);
+	 }
+}
+}
+
+3) Write a JDBC program to delete the records of employees whose names are starts with 'a' character
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+public class Delete {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+			Statement stmt=con.createStatement();
+			String sql =("delete from employees where ename like 'a%'");
+			stmt.executeUpdate(sql);
+			System.out.print("Value Deleted Sucessfully");
+	}
+		catch(Exception e) {
+			System.out.print(e);
+		 }
+}
+}
+
+
+
+4) Write a JDBC program to count the number of records in table.(Without using standard method)
+
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+public class Count {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+			Statement stmt=con.createStatement();
+			String sql = "select count(tno) from teacher";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				System.out.println(rs.getInt(1));
+			}
+	}
+	catch(Exception e) {
+		System.out.print(e);
+	}
+	}
+}
+
+
+5)Write a JDBC program to remove “percentage” column from student (rno, sname, percentage) table. Student table is already created.
+
+package javaprograms;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class percentage {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			 Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+			Statement stmt = con.createStatement();
+			String str = "ALTER TABLE student DROP COLUMN percentage;";
+			stmt.executeUpdate(str);
+			System.out.println("column deleted...");
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+
+}
+
+
+
+6) Write a JDBC program to accept the details of customer (CID, CName, Address, Ph_No) and store it into the database (Use Prepared Statement interface)
+
+import java.util.Scanner;
+import java.sql.*;
+public class Custtable {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PreparedStatement ps;
+		try
+         {
+                     int cid,no;
+                     String cname,caddr,pno; 
+                     Scanner sc = new Scanner(System.in);
+						Class.forName("com.mysql.jdbc.Driver");
+						 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+							if(con==null) 
+							{
+/								 System.out.print("Connection Failed");
+							}
+							 String sql="insert into Customer1 values(?,?,?,?)";
+							 ps=con.prepareStatement(sql);
+							 System.out.println("Customer Details....");
+							 System.out.println("Enter Cid");
+							 cid=sc.nextInt();
+							 ps.setInt(1, cid);
+							 System.out.println("Enter Cname");
+							 cname=sc.nextLine();
+							 ps.setString(2, cname);
+							 System.out.println("Enter Pno");
+							 pno=sc.nextLine();
+							 ps.setString(3, pno);
+							 System.out.println("Enter Caddr");
+							 caddr=sc.nextLine();
+							 ps.setString(4, caddr);
+							 no=ps.executeUpdate();
+							 if(no!=0)
+							 System.out.println("Record added successfully");
+							 else
+							 System.out.println("Record Not added");
+							 con.close();      
+         }catch(Exception e)
+         	{
+                     System.out.println(e);
+         	}
+		}	
+	}
+
+
+
+
+  
+7) Write a JDBC program in java to update an address of given customer(CID, CName, Address) and display updated details.
+
+package javaprograms;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class upaddcust {
+
+	public static void main(String[] args) {
+		try {
+			 Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+			Statement stmt = con.createStatement();
+			String str = " update customer set Caddress='phaltan' where Cid=101;";
+			stmt.executeUpdate(str);
+			System.out.println("updated address..");
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+}
+
+8) Write a JDBC program to create a Mobile (Model_No, Company_Name, Price, Color) table and insert a record in it.
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.Scanner;
+public class mobile {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			 int mno,price;
+	   		 String company,color;
+	   		Scanner sc = new Scanner(System.in);
+			 Class.forName("com.mysql.jdbc.Driver");
+			 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+			 Statement stmt = con.createStatement();
+			 String sql = "create table Mobile(Model_No INT,Company varchar(20),Price INT,Color varchar(20))";
+			 stmt.executeUpdate(sql);
+			 System.out.println("Table Created");
+		   	 System.out.println("Enter Model no");
+		   	 mno=sc.nextInt();
+		   	 System.out.println("Enter Company");
+		   	 company=sc.nextLine();
+		   	 System.out.println("Enter Price");
+		   	 price=sc.nextInt();
+		   	 System.out.println("Enter Color");
+		   	 color=sc.nextLine();
+		   	 stmt.executeUpdate("insert into Mobile values("+mno+",'"+company+"',"+price+",'"+color+"')");
+		   	 System.out.println("Record added successfully");
+		   	 con.close(); 
+		 		 }catch(Exception e)
+		  		{
+		   			System.out.println(e);
+		  		}
+		}
+	}
+
+
+9) Write a JDBC Program in java to display the names of Employees starting with 'S' character.
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+public class empstarts {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+			Statement stmt=con.createStatement();
+			ResultSet rs=stmt.executeQuery("select * from employee where ename like 'S%'");
+			System.out.println("eno\t"+"ename\t"+"department\t"+"sal");
+			while(rs.next())
+			{
+			System.out.println("\n"+rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.getInt(4));
+			}
+			}
+			catch(Exception e)
+			{
+			System.out.println(e);
+			}
+	}
+
+}
+
+
+
+10) Write a JDBC program to delete the details of given employee (ENoEName Salary). 
+
+package javaprograms;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class delemployee {
+
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+			Statement stmt = con.createStatement();
+			System.out.println("enter id:- ");
+			int i = sc.nextInt();
+			String str = " delete from emp where id="+i+";";
+			stmt.executeUpdate(str);
+			System.out.println("deleted successfully..");
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+}
+
+11) Write a java program to create a student table with field’s rno, name and per. Insert values in the table. Display all the details of the student on screen. (Use PreparedStatement Interface).
+
+import java.sql.*;
+import java.util.Scanner;
+public class student {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PreparedStatement ps;
+		try
+        {
+                    int per,rno,no;
+                    String name; 
+                    Scanner sc = new Scanner(System.in);
+					 Class.forName("com.mysql.cj.jdbc.Driver");
+					 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/b56","root","root");
+					 Statement stmt=con.createStatement();
+					 String sql="create table student1(rno INT,"+"name varchar(30),"+"per INT);";
+					 stmt.executeUpdate(sql);
+					 System.out.println("given table created in database");
+					 String query="insert into student1 values(?,?,?)";
+					 ps=con.prepareStatement(query);
+					 System.out.println("Enter roll no : ");
+					 rno=sc.nextInt();
+					 System.out.println("Enter name : ");
+					 name=sc.nextLine();
+					 System.out.println("Enter per : ");
+					 per=sc.nextInt();
+					 ps.setInt(1,rno);
+					 ps.setString(2,name);
+					 ps.setInt(3,per);
+					 no=ps.executeUpdate();
+					 if(no!=0)
+					 System.out.println("Data inserted succesfully.....");
+					 else
+					 System.out.println("Data not inserted");
+					 ResultSet rs=stmt.executeQuery("select * from Student1");
+					 System.out.println("rno\t"+"sname\t"+"perc");
+					 while(rs.next())
+					 {
+					 System.out.println("\n"+rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getInt(3));
+					 }
+					 con.close();
+					 }
+					 catch(Exception e)
+					 {
+					 System.out.println(e);
+					 }
+			} 
+	}
+
+
+
+
+12) Write a java program to display “Hello Java” message n times on the screen. (Use Runnable Interface).
+
+import java.util.Scanner;
+
+class mythread3 implements Runnable
+{
+	Thread t;
+	public mythread3(String s){
+		t = new Thread(this,s);
+		t.start();
+	}
+	public void run() {
+	Scanner sc = new Scanner(System.in);
+	System.out.println("enter number");
+	int n=sc.nextInt();
+		for(int i=0;i<n;i++) {
+			System.out.println(Thread.currentThread().getName());
+			try {
+				Thread.sleep(100);
+			}
+			catch(Exception e) {
+				
+			}
+		}
+	}
+}
+public class hellojava {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		mythread3 m =new mythread3("Hello Java");
+
+	}
+
+}
+
+
+
+13) Write a multithreading program in java to display all the vowels from a given String. [use thread class]
+
+import java.util.*;
+class vowel extends Thread{
+	String s1;
+	vowel(String s){
+		s1=s;
+		start();
+	}
+	public void run() {
+		System.out.println("vowels are");
+		for(int i=0;i<s1.length();i++) {
+			char ch =s1.charAt(i);
+			if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U') {
+				System.out.println(" "+ch);
+			}
+		}
+	}
+}
+public class vowels {
+	public static void main(String [] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter string");
+		String str=sc.next();
+		vowel v =new vowel(str);
+		}
+}
+
+
+14) Write a java program which will display priority of current thread. 
+
+class mythread1 extends Thread{
+	mythread1(String s){
+		super(s);
+		start();
+	}
+	public void run() {
+		for(int i=0;i<3;i++) {
+			Thread cur = Thread.currentThread();
+			cur.setPriority(Thread.MIN_PRIORITY);
+			int p = cur.getPriority();
+			System.out.println(Thread.currentThread().getName());
+			System.out.println("Thread priority"+cur);
+		}
+	}
+}
+class mythread2 extends Thread{
+	mythread2(String s){
+		super(s);
+		start();
+	}
+	public void run() {
+		for(int i=0;i<3;i++) {
+			Thread cur = Thread.currentThread();
+			cur.setPriority(Thread.MAX_PRIORITY);
+			int p = cur.getPriority();
+			System.out.println(Thread.currentThread().getName());
+			System.out.println("Thread priority"+cur);
+		}
+	}
+}
+public class priority {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		mythread1 m1 = new mythread1("mythread1");
+		mythread2 m2 = new mythread2("mythread2");
+	}
+
+}
+
+
+15) Write a java program using multithreading to execute the table sequentially. (Use Synchronized Method)
+
+class table
+{
+	void print_table(int n)
+	{
+		synchronized(this)
+		{
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println(n*i);
+		    try {
+			Thread.sleep(400);
+	        }
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+ }
+}
+}
+class Mythread extends Thread{
+	table T = new table();
+	Mythread(table t)
+	{
+		this.T=t;
+	}
+	public void run() {
+		T.print_table(5);
+	}
+}
+class Mythread2 extends Thread{
+	table T = new table();
+	Mythread2(table t){
+		this.T=t;
+	}
+	public void run() {
+		T.print_table(100);
+	}
+}
+public class Test{
+
+	public static void main(String[] args) {
+		table obj = new table();
+		Mythread m1 = new Mythread(obj);
+		Mythread2 m2 = new Mythread2(obj);
+		
+		m1.start();
+		m2.start();
+		
+	}
+}
+
+
+
+16) Write a java program which will display name and priority of current. Change name of Thread to Mythread and set the priority to 2 display it on screen.
+
+
+public class Slip17 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String S;
+		int p;
+		Thread t = Thread.currentThread();
+		S = t.getName();
+		System.out.println("\n Current Thread name: "+S);
+		p = t.getPriority();
+		System.out.println("\n Current Thread Priority: "+p);
+		t.setName("My Thread");
+		S = t.getName();
+		System.out.println("\n Changed Name: "+S);
+		t.setPriority(2);
+		p = t.getPriority();
+		System.out.println("\n Changed Priority: "+p);
+		}
+
+}
+
+
+17) Write a multithreading program in java to display all the alphabets from A to Z after 3 seconds
+
+
+public class atoz extends Thread {
+	char c;
+	public void run()
+	{
+		for(c= 'A'; c<='Z';c++) {
+			System.out.println(""+c);
+			try {
+				Thread.sleep(3000);
+			}
+			catch(Exception e) {
+				System.out.println(e);
+			}
+			
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		atoz t = new atoz();
+		t.start();
+	}
+
+}
+
+
+18) Write a java program to stimulate traffic signal using multithreading 
+
+import java.util.Arrays;
+import java.util.List;
+
+public class light1 implements Runnable {
+	public enum Color {RED, ORANGE, GREEN}
+	private List<Color> light = Arrays.asList(Color.GREEN, Color.ORANGE, Color.RED);
+	
+	private static volatile int counter = 0;
+	private int i;
+	
+	private static final Object lock = new Object();
+	
+	public light1(Color color) {
+		this.i = light.indexOf(color);
+	}
+	public void run() {
+		try {
+			synchronized(lock) {
+				while(true) {
+					while(counter % light.size() != i) lock.wait();
+					System.out.println(Thread.currentThread().getName() + "::" + light.get(counter % light.size()));
+					counter++;
+					Thread.sleep(1000);
+					lock.notifyAll();
+				}
+			}
+		} catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Thread(new light1(light1.Color.GREEN)).start();
+		new Thread(new light1(light1.Color.ORANGE)).start();
+		new Thread(new light1(light1.Color.RED)).start();
+	}
+
+}
+
+
+19) Write a multithreading program using Runnable interface to blink text on the frame.
+
+import java.awt.Label;
+import javax.swing.JFrame;
+
+public class Blinktext extends JFrame implements Runnable {
+	Thread t;
+	Label l1;
+	int f;
+	JFrame frame;
+	public Blinktext() {
+		t=new Thread(this);
+		t.start();
+		setLayout(null);
+		l1=new Label("HELLO JAVA");
+		l1.setBounds(100,100,100,40);
+		add(l1);
+		setSize(300,300);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f=0;
+	}
+	public void run()
+	{
+		try {
+			if(f==0) {
+				t.sleep(200);
+				l1.setText("");
+				f=1;
+			}
+			if(f==1) {
+				t.sleep(200);
+				l1.setText("Hello Java");
+				f=0;
+			}
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		run();
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 new Blinktext();
+	}
+
+}
+
+
+1) Write a java program to display IP address and name of the client Machine
+
+import java.net.*;
+public class findip {
+
+	public static void main(String[] args) throws Exception{
+		InetAddress my_localhost = InetAddress.getLocalHost();
+		System.out.println("The Ip Address of client is: "+(my_localhost.getHostAddress()).trim());
+		System.out.println("The host name is:" + my_localhost.getHostName());
+
+	}
+
+}
+
+
+2) Write a socket program in java in which client accept a number, send it to the server, server calculates its factorial and sends result to the client
+
+factserver.java
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+public class factserver {
+
+	public static void main(String[] args)throws Exception {
+		// TODO Auto-generated method stub
+		String num,res;
+		int i,no;
+		long fact;
+		System.out.println("Server is ready");
+		DatagramSocket serversocket = new DatagramSocket(6870);
+			byte []send=new byte[102];
+			byte []resive=new byte[102];
+			DatagramPacket resPck=new DatagramPacket(resive,resive.length);
+			serversocket.receive(resPck);
+			num=new String(resPck.getData());
+			num=num.trim();
+			no=Integer.parseInt(num);
+			fact=1;
+			for(i=1;i<=no;i++)
+				fact=fact*i;
+			res=Long.toString(fact);
+			send=res.getBytes();
+			InetAddress ipadd= resPck.getAddress();
+			int port=resPck.getPort();
+			DatagramPacket sendPck = new DatagramPacket(send,send.length,ipadd,port);
+			serversocket.send(sendPck);
+	}
+
+}
+
+factclient.java
+import java.io.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+public class factclient {
+
+	public static void main(String[] args)throws Exception {
+		String n;
+		DatagramSocket clientSocket = new DatagramSocket();
+		byte []send=new byte[102];
+		byte []resive=new byte[102];
+		BufferedReader inFromUser=new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("\nEnter Number:");
+		n=inFromUser.readLine();
+		InetAddress ipadd= InetAddress.getByName("localhost");
+		send=n.getBytes();
+		DatagramPacket sendPck= new DatagramPacket(send,send.length,ipadd,6870);
+		clientSocket.send(sendPck);
+		DatagramPacket resPck= new DatagramPacket(resive,resive.length);
+		clientSocket.receive(resPck);
+		String fact=new String(resPck.getData());
+		System.out.println("FROM SERVER: "+n+"! = " +fact);
+		clientSocket.close();
+	}
+
+}
+
+3) Write a socket program in java in check whether given file is present on server or not. If it is present then display its contents on the server’s machine otherwise display
+ an error message.
+TCPServer.java
+import java.net.ServerSocket;
+import java.net.Socket;
+public class TCPServer {
+
+	public static void main(String[] args) {
+		try (ServerSocket WelcomeServer = new ServerSocket(80)) {
+			System.out.println("Server Started");
+			System.out.println("Waiting for client");
+			
+			Socket ClientSocket = WelcomeServer.accept();
+			System.out.println("Client accepted to the port number"+ClientSocket.getLocalPort());
+		}
+catch(Exception e) {
+	
+}
+	}
+
+}
+
+TCPClient.java
+import java.net.Socket;
+public class TCPClient {
+
+	public static void main(String[] args) {
+	try {
+		Socket ClientSocket = new Socket("localhost",80);
+		System.out.println("Connected to server");
+	}
+	catch(Exception e) {
+	}
+
+}
+} 
+
+4) Write a socket program in java which displays the server machine’s date and time on the client machine.
+DateClient.java
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.Socket;
+
+public class DateClient {
+
+	public static void main(String[] args)throws Exception {
+		// TODO Auto-generated method stub
+   Socket soc=new Socket(InetAddress.getLocalHost(),5217);
+   BufferedReader in = new  BufferedReader(new InputStreamReader(soc.getInputStream()));
+   System.out.println(in.readLine());
+	}
+
+}
+
+
+DataServer
+
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Date;
+
+
+public class DateServer {
+
+	public static void main(String[] args)throws Exception {
+		// TODO Auto-generated method stub
+  ServerSocket s=new ServerSocket(5217);
+  while(true)
+  {
+	  System.out.println("watting for Connection");
+	  Socket soc=s.accept();
+	  DataOutputStream out=new DataOutputStream(soc.getOutputStream());
+	  out.writeBytes("server Date: " + (new Date()).toString()+"\n");
+	  out.close();
+	  soc.close();
+	  
+	  
+  }
+	}
+
+}
+
+
+5) Write a socket programming in java for simple standalone chatting application. 
+
+ServerChat
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ServerChat {
+
+	public static void main(String[] args)throws Exception
+	{
+		ServerSocket sersock = new ServerSocket(3004);
+		System.out.println("Server ready for sending message");
+		Socket sock=sersock.accept();
+		BufferedReader keyRead = new  BufferedReader(new InputStreamReader(System.in));
+		OutputStream ostream=sock.getOutputStream();
+		PrintWriter pwrite = new PrintWriter(ostream,true);
+		InputStream istream=sock.getInputStream();
+		BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
+		System.out.println("Strat the chatting ,type and press the key");
+		String receiveMessage,sendMessage;
+		while(true)
+		{
+			
+			if((receiveMessage=receiveRead.readLine())!=null)
+			{
+				System.out.println(receiveMessage);
+			}
+			sendMessage=keyRead.readLine();
+			pwrite.println(sendMessage);
+			pwrite.flush();
+		}
+		
+	}
+	
+}
+
+
+
+ClientChat
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class ClientChat {
+
+	public static void main(String[] args)throws Exception
+	{
+		Socket sock=new Socket("Localhost",3004);
+		BufferedReader keyRead = new  BufferedReader(new InputStreamReader(System.in));
+		OutputStream ostream=sock.getOutputStream();
+		PrintWriter pwrite = new PrintWriter(ostream,true);
+		InputStream istream=sock.getInputStream();
+		BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
+		System.out.println("Strat the chatting ,typr and press the key");
+		String receiveMessage,sendMessage;
+		while(true)
+		{
+			sendMessage=keyRead.readLine();
+			pwrite.println(sendMessage);
+			pwrite.flush();
+			if((receiveMessage=receiveRead.readLine())!=null)
+			{
+				System.out.println(receiveMessage);
+			}
+		}
+		
+	}
+	
+}
+
+
+
+
+						JSP
+1) Create a JSP page to accept a number from a user and display it in words: Example: 123 – One Two Three. The output should be in red color.
+
+Numberword.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="get" action="NumberWord.jsp">
+<fieldset>
+<legend>Enter Any Number </legend>
+<input type=text name=num><br><br>
+</fieldset>
+<div align=center>
+<input type="submit" value="Display">
+</div>
+</form>
+</body>
+</html>
+
+NumberWord.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<font color=red>
+<%! int i,n;
+String s1;
+%>
+<%
+s1=request.getParameter("num");
+n=s1.length();
+i=0;
+do {
+char ch=s1.charAt(i);
+switch(ch)
+{
+case '0': out.println("Zero ");
+break;
+case '1': out.println("One ");
+break;
+case '2': out.println("Two ");
+break;
+case '3': out.println("Three ");
+break;
+case '4': out.println("Four ");
+break;
+case '5': out.println("Five ");
+break;
+case '6': out.println("Six ");
+break;
+case '7': out.println("Seven ");
+break;
+case '8': out.println("Eight ");
+break;
+case '9': out.println("Nine ");
+break;
+}
+i++;
+}
+while(i<n);
+%>
+</font>
+</body>
+</html>
+
+2) Write a JSP script to accept username, store it into the session, compare it with password in another jsp file, if username matches with password then display appropriate message in html file.
+
+Index.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+</head>
+<body>
+<form action="checkdetails.jsp">
+<fieldset>
+<legend>Enter User Id and Password...!!!</legend>
+ UserId: <input type="text" name="id" /> <br><br>
+Password: <input type="text" name="pass" /> <br><br>
+</fieldset>
+<div align=center>
+<input type="submit" value="Sign In!!"/>
+</div>
+</form>
+</body>
+</html>
+
+checkdetails.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Check Credentials</title>
+</head>
+<body>
+<%
+ String uid=request.getParameter("id");
+ String password=request.getParameter("pass");
+ session.setAttribute("session-uid", uid);
+ if(uid.equals("Sachin") && password.equals("Sachin"))
+ {
+ response.sendRedirect("success.jsp");
+ }
+ else {
+ response.sendRedirect("failed.jsp");
+ }
+ %>
+</body>
+</html>
+</body>
+</html>
+
+success.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Success Page</title></head>
+<body>
+<%
+ String data=(String)session.getAttribute("session-uid");
+ out.println(" Login Successfully...!!!");
+ %>
+</body>
+</html>
+
+failed.jsp
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign-in Failed Page</title></head>
+<body>
+<%
+ String data2=(String)session.getAttribute("session-uid");
+ out.println(" User Id and Password are wrong. Please try Again.");
+ %>
+</body>
+</html>
+
+
+3) Write a JSP program which accept Username in a Textbox and greets the user according to the time on server machine.
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<body>
+<form action="Slip16.jsp" method="post">
+Enter Your Name : <input type="text" name="name">
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+Slip16.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+String name=request.getParameter("name");
+java.util.Date d=new java.util.Date();
+int hr=d.getHours();
+if(hr<12)
+{
+ out.println("Good Morning:"+name);
+} 
+if(hr>12 && hr<16)
+{
+ out.println("Good Afternoon:"+name);
+}
+if(hr>16)
+{
+ out.println("Good Evening:"+name);
+}
+%>
+</body>
+</html>
+
+4) Write a JSP script to check whether given mail ID is valid or not. (Mail ID should contain one @ symbol and at least one Dot(.) symbol)
+
+Email.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form name=f1 action="EmailCheck.jsp">
+<fieldset>
+<legend>Enter Email Id...!!!</legend>
+ Enter Email Id:<input type="text" name="t1" >
+</fieldset>
+<div align=center>
+<input type="submit" name="Submit" value="Submit">
+</div>
+</form>
+</body>
+</html>
+
+EmailCheck.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%@ page language="java" %>
+<%
+ String email=request.getParameter("t1");
+ if(email.contains("@") && email.contains("."))
+ {
+ out.println("Given Email Id is Valid");
+ }
+ else {
+ out.println("Given Email id is not Valid");
+ }
+ %>
+</body>
+</html>
+
+5) Write a JSP program to check whether given number is Armstrong or not.
+
+Arm.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="Slip28.jsp" method="post">
+Enter Number :
+<input type="text" name="num">
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
+
+Slip28.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+int num = Integer.parseInt(request.getParameter("num"));
+int n = num;
+int rem,no = 0;
+while(n!=0)
+{
+rem = n%10;
+no = no+rem*rem*rem;
+n = n/10;
+}
+if(no == num)
+{
+out.println("\nArmstrong Number");
+}
+else
+{
+out.println("Not Armstrong");
+}%>
+</body>
+</html>
+
+						SERVLET
+1) Write a SERVLET program which counts how many times a user has visited a web page. If user is visiting the page for the first time, display a welcome message. If the user is revisiting the page, display the number of times visited.(Use Cookie)
+
+VisitServlet.Java
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class VisitServlet extends HttpServlet
+{
+ static int i=1;
+ public void doGet(HttpServletRequest request, HttpServletResponse response)
+ throws IOException, ServletException
+ {
+ response.setContentType("text/html");
+ PrintWriter out = response.getWriter();
+ String k=String.valueOf(i);
+ Cookie c = new Cookie("visit",k);
+ response.addCookie(c);
+ int j=Integer.parseInt(c.getValue());
+ if(j==1)
+ {
+ out.println("Welcome");
+ }
+ else
+ {
+ out.println("You visited "+i+" times");
+ }
+ i++; 
+ }
+}
+
+Web.xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app>
+<servlet>
+ <servlet-name>VisitServlet</servlet-name>
+ <servlet-class>VisitServlet</servlet-class>
+ </servlet>
+<servlet-mapping>
+ <servlet-name>VisitServlet</servlet-name>
+ <url-pattern>/servlet/VisitServlet</url-pattern>
+ </servlet-mapping>
+</web-app>
+
+2) Write a SERVLET program to change inactive time interval of session.
+
+import java.util.*;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+public class Timeout extends HttpServlet {
+ 
+ public void doGet(HttpServletRequest req, HttpServletResponse res)
+ throws ServletException, IOException {
+ res.setContentType("text/html");
+ PrintWriter out = res.getWriter();
+ // Get the current session object, create one if necessary
+ HttpSession session = req.getSession();
+ out.println("<HTML><HEAD><TITLE>SessionTimer</TITLE></HEAD>");
+ out.println("<BODY><H1>Session Timer</H1>");
+ // Display the previous timeout
+ out.println("The previous timeout was " +
+ session.getMaxInactiveInterval());
+ out.println("<BR>");
+ // Set the new timeout
+ session.setMaxInactiveInterval(2*60*60); // two hours
+ // Display the new timeout
+ out.println("The newly assigned timeout is " +
+ session.getMaxInactiveInterval());
+ out.println("</BODY></HTML>");
+ }
+}
+
+Web.xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app>
+<servlet>
+ <servlet-name>Timeout</servlet-name>
+ <servlet-class>Timeout</servlet-class>
+ </servlet>
+<servlet-mapping>
+ <servlet-name>Timeout</servlet-name>
+ <url-pattern>/servlet/Timeout</url-pattern>
+ </servlet-mapping>
+</web-app>
+
+
+3) Write a SERVLET program that provides information about a HTTP request from a client, such as IP address and browser type. The servlet also provides information about the server on which the servlet is running, such as the operating system type, and the names of cur
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class Servletinfo extends HttpServlet {
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws 
+ServletException, IOException {
+response.setContentType("text/html");
+PrintWriter pw = response.getWriter();
+pw.println("<html><body><h2>Information about Http Request</h2>");
+pw.println("<br>Server Name: "+request.getServerName());
+pw.println("<br>Server Port: "+request.getServerPort());
+pw.println("<br>Server Addr: "+request.getRemoteAddr());
+pw.println("</body></html>");
+pw.close();
+} 
+
+4)Write a SERVLET program in java to accept details of student (SeatNo,Stud_Name, Class, Total_Marks). Calculate percentage and grade obtained and display details on page.
+
+Studentinfo.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="f1" method="Post" action="Servletdemo">
+<fieldset>
+<legend><b><i>Enter Student Details:</i></b></legend>
+Enter Roll No: <input type="text" name="txtsno"><br><br>
+Enter Name: <input type="text" name="txtnm"><br><br>
+Enter Class: <input type="text" name="txtclass"><br><br>
+<fieldset>
+<legend><b><i>Enter Student Mark Details:</i></b></legend>
+Subject 1: <input type="text" name="txtsub1"><br><br>
+Subject 2: <input type="text" name="txtsub2"><br><br>
+Subject 3: <input type="text" name="txtsub3"><br><br>
+<input type="submit" name="Submit">
+</fieldset>
+</fieldset>
+</form>
+</body>
+</html>
+
+Servletdemo.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class Servletdemo extends HttpServlet {
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws 
+ServletException, IOException {
+int sno,s1,s2,s3,total;
+String snm,sclass;
+float per;
+response.setContentType("text/html");
+PrintWriter out=response.getWriter();
+sno=Integer.parseInt(request.getParameter("txtsno"));
+snm=request.getParameter("txtnm");
+sclass=request.getParameter("txtclass");
+s1=Integer.parseInt(request.getParameter("txtsub1"));
+s2=Integer.parseInt(request.getParameter("txtsub2"));
+s3=Integer.parseInt(request.getParameter("txtsub3"));
+total=s1+s2+s3;
+per=(total/3);
+out.println("<html><body>");
+out.println("<h2>Result of student</h2><br>");
+out.println("<b><i>Roll No :</b></i>"+sno+"<br>");
+out.println("<b><i>Name :</b></i>"+snm+"<br>");
+out.println("<b><i>Class :</b></i>"+sclass+"<br>");
+out.println("<b><i>Subject1 :</b></i>"+s1+"<br>");
+out.println("<b><i>Subject2 :</b></i>"+s2+"<br>");
+out.println("<b><i>Subject3 :</b></i>"+s3+"<br>");
+out.println("<b><i>Total :</b></i>"+total+"<br>");
+out.println("<b><i>Percentage :</b></i>"+per+"<br>");
+if(per>50)
+out.print("<h1><i>Pass Class</i></h1>");
+else if(per<55 && per>50)
+out.print("<h1><i>Second Class</i></h1>");
+else if(per<60 && per>=55)
+out.print("<h1><i>Higher Class</i></h1>");
+out.close();
+}
+}
+
