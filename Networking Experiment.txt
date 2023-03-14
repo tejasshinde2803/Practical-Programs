@@ -1,0 +1,756 @@
+Experiment-1
+
+Aim: Study of following Network Devices in Detail 
+• Repeater 
+• Hub
+• Switch
+• Bridge
+• Router 
+• Gate Way
+
+Apparatus (Software): No software or hardware needed.
+
+Procedure: Following should be done to understand this practical.
+1. Repeater: Functioning at Physical Layer.Arepeater is an electronic device that receives a signal and retransmits it at a higher level and/or higher power, or 
+                    onto the other side of an obstruction, so that the signal can cover longer distances. Repeater have two ports ,so cannot be use to connect for more 
+                    than two devices
+
+2. Hub: An Ethernet hub, active hub, network hub, repeater hub, hub or concentratoris a device for connecting multiple twisted pair or fiber optic Ethernet devices 
+together andmaking them act as a single network segment. Hubs work at the physical layer (layer 1) of theOSI model. The device is a form of multiport repeater. 
+Repeater hubs also participate in collision detection, forwarding a jam signal to all ports if it detects a collision.
+
+3. Switch:Anetwork switch or switching hub is a computer networking device that connectsnetwork segments.The term commonly refers to a network bridge that 
+processes and routes dataat the data link layer (layer 2) of the OSI model. Switches that additionally process data at thenetwork layer (layer 3 and above) are often 
+referred to as Layer 3 switches or multilayerswitches.
+
+4. Bridge: A network bridge connects multiple network segments at the data link layer (Layer2) of the OSI model. In Ethernet networks, the term bridge formally means 
+a device that behaves according to the IEEE 802.1D standard. A bridge and switch are very much alike; a switch beinga bridge with numerous ports. Switch or Layer 2 
+switch is often used interchangeably with bridge .Bridges can analyze incoming data packets to determine if the bridge is able to send thegiven packet to another segment 
+of the network.
+
+5. Router: A router is an electronic device that interconnects two or more computer networks,and selectively interchanges packets of data between them. Each data packet 
+contains address information that a router can use to determine if the source and destination are on the samenetwork, or if the data packet must be transferred from one 
+network to another. Where multiple routers are used in a large collection of interconnected networks, the routers exchangeinformation about target system addresses, so 
+that each router can build up a table showing the preferred paths between any two systems on the interconnected networks.
+
+6. Gate Way: In a communications network, a network node equipped for interfacing with another network that uses different protocols. • A gateway may contain devices
+ such as protocol translators, impedance matching devices, rate converters, fault isolators, or signal translators as necessary to provide system interoperability. It also 
+requires the establishment of mutually acceptable administrative procedures between both networks. • A protocol translation/mapping gateway interconnects networks 
+with different network protocol technologies by performing the required protocol conversions.
+
+
+Experiment-2
+
+Aim: Study of different types of Network cables and practically implement the cross-wired cable and straight through cable using clamping tool.
+
+Apparatus (Components): RJ-45 connector, Climping Tool, Twisted pair Cable
+
+Procedure: To do these practical following steps should be done:
+
+1. Start by stripping off about 2 inches of the plastic jacket off the end of the cable. Be very careful at this point, as to not nick or cut into the wires, which are inside. 
+Doing so could alter the characteristics of your cable, or even worse render is useless. Check the wires, one more time for nicks or cuts. If there are any, just whack the 
+whole end off, and start over.
+
+2. Spread the wires apart, but be sure to hold onto the base of the jacket with your other hand. You do not want the wires to become untwisted down inside the jacket. 
+Category 5 cable must only have 1/2 of an inch of 'untwisted' wire at the end; otherwise it will be 'out of spec'. At this point, you obviously have ALOT more than 1/2 
+of an inch of un-twisted wire.
+
+3. You have 2 end jacks, which must be installed on your cable. If you are using a pre-made cable, with one of the ends whacked off, you only have one end to install - 
+the crossed over end. Below are two diagrams, which show how you need to arrange the cables for each type of cable end. Decide at this point which end you are 
+making and examine the associated picture below
+
+Experiment-3
+
+Aim: Connect the computers in Local Area Network.
+
+Procedure: On the host computer
+
+On the host computer, follow these steps to share the Internet connection:
+1. Log on to the host computer as Administrator or as Owner.
+
+2. Click Start, and then click Control Panel. 
+
+3. Click Network and Internet Connections. 
+
+4. Click Network Connections. 
+
+5. Right-click the connection that you use to connect to the Internet. 
+For example, if you connect to the Internet by using a modem, right-click the connection that you want under Dial-up / other network available.
+
+6. Click Properties. 
+
+7. Click the Advanced tab.
+
+8. Under Internet Connection Sharing, select the Allow other network users to connect through this computer's Internet connection check box.
+
+9. If you are sharing a dial-up Internet connection, select the Establish a dial-up connection whenever a computer on my network attempts to access the Internet check 
+box if you want to permit your computer to automatically connect to the Internet.
+
+10. Click OK. You receive the following message:
+When Internet Connection Sharing is enabled, your LAN adapter will be set to use IP address 192.168.0. 1. Your computer may lose connectivity with other computers 
+on your network. If these other computers have static IP addresses, it is a good idea to set them to obtain their IP addresses automatically. Are you sure you want to enable 
+Internet Connection Sharing?
+
+11. Click Yes. The connection to the Internet is shared to other computers on the local area network (LAN). The network adapter that is connected to the LAN is configured 
+with a static IP address of 192.168.0. 1 and a subnet mask of 255.255.255.0 On the client computer To connect to the Internet by using the shared connection, you must 
+confirm the LAN adapter IP configuration, and then configure the client computer. To confirm the LAN adapter IP configuration, follow these steps:
+1. Log on to the client computer as Administrator or as Owner.
+2. Click Start, and then click Control Panel.
+3. Click Network and Internet Connections. 
+4. Click Network Connections. 
+5. Right-click Local Area Connection and then click Properties. 
+6. Click the General tab, click Internet Protocol (TCP/IP) in the connection uses the following items list, and then click Properties. 
+7. In the Internet Protocol (TCP/IP) Properties dialog box, click Obtain an IP address automatically (if it is not already selected), and then click OK. Note: You can also 
+assign a unique static IP address in the range of 192.168.0.2 to 254. For example, you can assign the following static IP address, subnet mask, and default gateway:
+8. IP Address 192.168.31.202
+9. Subnet mask 255.255.255.0
+10. Default gateway 192.168.31.1
+11. In the Local Area Connection Properties dialog box, click OK. 
+12. Quit Control Panel.
+
+
+Experiment-4
+
+Aim: Study of network IP.
+
+• Classification of IP address
+• Sub netting
+• Super netting
+
+Apparatus (Software): NA
+
+Procedure: Following is required to be study under this practical. 
+• Classification of IP address
+
+As show in figure we teach how the ip addresses are classified and when they are used.
+Class 	 Address Range 		  	Supports
+Class A 	 1.0.0.1 to 126.255.255.254    		Supports 16 million hosts on each of 127 networks.
+Class B 	 128.1.0.1 to 191.255.255.254 		Supports 65,000 hosts on each of 16,000 networks.
+Class C 	 192.0.1.1 to 223.255.254.254 		Supports 254 hosts on each of 2 million networks.
+Class D 	 224.0.0.0 to 239.255.255.255 		Reserved for multicast groups.
+Class E 	 240.0.0.0 to 254.255.255.254 		Reserved
+
+• Sub netting
+Why we Develop sub netting and How to calculate subnet mask and how to identify subnet address.
+
+• Super netting
+Why we develop super netting and How to calculate supernet mask and how to identify supernet
+address.
+
+Experiment-5
+
+Aim: Study of basic network command and Network configuration commands.
+
+Apparatus (Software): Command Prompt And Packet Tracer.
+
+Procedure: To do this EXPERIMENT- follows these steps:
+In this EXPERIMENT- students have to understand basic networking commands e.g ping, tracert etc.
+
+All commands related to Network configuration which includes how to switch to privilege mode and normal mode and how to configure router interface and how to 
+save this configuration to flash memory or permanent memory.
+
+This commands includes
+• Configuring the Router commands
+• General Commands to configure network
+• Privileged Mode commands of a router 
+• Router Processes & Statistics
+• IP Commands
+• Other IP Commands e.g. show ip route etc.
+
+ping:
+ping(8) sends an ICMP ECHO_REQUEST packet to the specified host. If the host responds, you get an ICMP packet back. Sound strange? Well, you can “ping” an IP 
+address to see if a machine is alive. If there is no response, you know something is wrong.
+
+PC>ping 192.168.1.2
+
+Traceroute:
+Tracert is a command which can show you the path a packet of information takes from your computer to one you specify. It will list all the routers it passes through until 
+it reaches its destination, or fails to and is discarded. In addition to this, it will tell you how long each 'hop' from router to router takes.
+
+nslookup:
+Displays information from Domain Name System (DNS) name servers.
+NOTE :If you write the command as above it shows as default your pc's server name firstly.
+
+pathping:
+A better version of tracert that gives you statics about packet lost and latency.
+
+Getting Help
+In any command mode, you can get a list of available commands by entering a question mark (?).
+Router>?
+To obtain a list of commands that begin with a particular character sequence, type in those characters followed immediately by the question mark (?).
+Router#co?
+
+configure connect copy
+To list keywords or arguments, enter a question mark in place of a keyword or argument.
+Include a space before the question mark.
+
+Router#configure ?
+memory Configure from NV memory network Configure from a TFTP network host terminal
+Configure from the terminal
+You can also abbreviate commands and keywords by entering just enough characters to make the command unique from other commands. For example, you can abbreviate the show
+command to sh
+
+
+Configuration Files
+Any time you make changes to the router configuration, you must save the changes to memory because if you do not they will be lost if there is a system reload or 
+power outage. There are two types of configuration files: the running (current operating) configuration and the startup configuration. Use the following privileged mode 
+commands to work with configuration files.
+
+
+Experiment-6
+
+Aim: Connect two pc using cisco packet tracer.
+
+Step 1-  click start & open cisco packet traces.
+
+Step 2-  Choose the end devices icon & extract 4 desktops / PC need by click on it after that drag it at the place which we need.
+
+Step 3-  Add Switch device to Connect between the desktops 
+              Note: We Can extract the switch device from the icon which it shown in picture.
+
+Step 4-  Connecting the desktops via Switch using cross-over Cable.
+              Note : We can use the cross-over cable from Connection icon, to Connect each desktop to the switch
+
+Step 5- click on Cross-over cable then click on desktop (PC0) after that click on the switch 
+             Note: Do this step with all desktops.
+
+Step 6- Give an IP address for each desktops
+
+Step 7- By click on the desktop a window will appear 
+	 IP address 
+	 Subnet Mask
+            The IP address for (PC0) is 192.168.1.2 & the Subnet mask is 255.255.255.0
+	(PC1) is 192.168.1.3
+	(PC2) is 192.168.1.4
+	(PC3) is 192.168.1.5
+
+Step 8- Finally we done all steps & give IP address to each computer.
+
+Experiment-7
+
+Aim: Router configuration with cisco packet tracer.
+
+Apparatus: cisco packet tracer
+
+Procedure: Configuration
+
+Step 1- Select the two switch & one router & 4 PC then Connect two PCs to each switch & both switch. 
+            Connect to the couter.
+
+Step 2- Then Set IP address to PC0 192.168 1.2  255.255. 255.0 default gateway 192.168.1.1 
+             IP address to PC1 192.168.1.3  255.255.255.0 default gateway 192.168.1.1
+             IP address to PC2 192.168.2.2  255.255.255.0 default gateway 192.168.2.1
+             IP address to PC3 192.168.2.3  255.255.255.0 default gateway 192.168.2.1
+
+Step 3- Select router & open CLI 
+             Press Enter to start Configuration Router 1
+             Type enable to activate the privileged mode.
+             Type Config t (Configuration terminal) to access the Configuration menu
+             Configute interface of Router1 Command Line Interface
+	Router enable 
+	Router # config t
+	Router(config)# interface g0/0/0
+	Router(config-if)# ip address 192.168.1.1 255.255.255.0
+	Router (config-if)# no shutdown
+	Router> end
+ii] Route 2 Command Line 
+	Router> Config t
+	Router (config)# interface g0/0/1
+	Routes (config-if)# ip address 192.168.2.1 255 255 255 0
+	Router (config-if)# no shutdown
+	Router >end 
+	Router > wr // Config & building
+	Route> Show IP Interface br
+
+Router Configuration table.
+
+Experiment-8
+
+Aim: Email Server [SMTP] configuration in cisco packet tracer.
+
+Apparatus: cisco packet tracer
+
+Procedure:
+
+Step-1 	i] Take one router C2911 & Server then Connect both each other.
+	ii] Then take two switch both switch are Connected to the router. 
+	iii] Take two PC & Connect to the each PC to one Switch 
+	iv] Once the all Connection done then assign IP address for PCO - IP address - 192.168.1.2 & default gateway-192.168.1.1 & close it & do the same 
+	process for PC1 assign IP address - 192.168.2.2 default gateway 192.168.2.1 
+	v] & go for the Seaver & type the IP address for the Server also. Assign IP address -190.163.3.2 & default gateway-192.168.3.1 
+
+Step-2	i]Then go to the router & select the gigabite0/0 & Assign the default gateway of PC0 192.168.1.1 & click on. 
+	ii]Do the Same thing for g/0/1 & Assign default gateway 192.168.2.1 & click on.
+	iii]Do the same thing for g0/2 & assign defaut gateway 192.168.3.1 & click on. 
+
+Step-3 	i]go to the server & click services then. click on Email.
+	ii]On the SMTP & PoP3 services
+	iii]Type domain name - email.com then type username & password - client1 & admin & click on  add(+) then type 2nd username & password client2
+	& admin & click on add(+) & close it.
+	iv]goto PC0 & the email then type username- client1. Email address- client1@email.com
+	Incoming mail server- 192.168.3.2
+	Outgoing mail server- 192.168.3.2 then type username- client1 & password- admin click on save
+
+Step-4	Go to PC0 & click email then compose msg. Type the PC1 email client@email.com subject-text
+	hi hello & click send then go to the PC1 & click email then click on receive it will show the result.
+
+Experiment-9
+
+Aim: HTTP web server configuration in cisco packet tracer.
+
+Apparatus: cisco packet tracer.
+
+Procedure: 
+Step-1 First open the cisco packet tracer desktop & Select the devices given below.
+	S.No	DeviceName	QTY
+	1	PC		2
+	2	Switch PT		1
+	3	Server-PT		1
+
+Step-2 IP Address Table
+	S.No	Device	IP Address		Default gateway
+	1	PC0	192.168.1.2		192.168.1.1
+	2	PC1	192.168.1.3		192.168.1.1
+	3	Server0	192.168.1.1
+
+Step-3 Then create a Network topology use an automatic Connecting cable to connect the devices with others. 
+
+Step-4 Assign the IP address according to IP address table to assign IP address click on the device then go to desktop & IP Configuration & there 
+            you will find IPv4 address. Fill the IPv4 address, Subnet Mask, default gateway 
+
+Step-5 Configure the HTTP Server. To Configure the HTTP Server, Go to services then click on HTTP. Then click on index.html & edit it & then save it.
+
+Step-6 Then go to the HTTP Server & click on desktop & then click on web server. Type the url = IP address of server 192.168.1.1 then click on go it will show 
+           the result. 
+
+Experiment-10
+
+Aim: DNS Server configuration in cisco packet tracer.
+
+Apparatus: cisco packet tracer.
+
+Procedure - 
+Step-1 Open cisco packet tracer desktop & Select the devices given below.
+	S.NO	Device Name	Qty
+	1	PC0		1
+	2	PT-Switch		1
+	3	DNS-Server	1
+
+Step-2  	IP Address Table
+	S.No	Device		IP Address		Default gateway
+	1	PC0		192.168.1.2		192.168.1.1
+	2	DNS Server	192.168.1.1		192.168.1.1
+
+Step-3 Then create Network topology use automatic Connecting cable to connect the devices with others. 
+            Assign IP address according to IP address table
+
+Step-4 Configure the DNS server to Configure DNS server go to Services then click DNS Then turn on the DNS Services Name the Server cisco.com 
+            or mypage.com & type address 192.168.1.1 & add the record.
+
+Step-5 Verify the server by using the web browser in the host or PC0. Enter IP Address or server name e.g 192.168.1.1 or mypage.com & click on go it will show
+            the result.
+
+Experiment-11
+
+Aim: File Transfer Protocol [FTP] Server Configuration using cisco packet tracer.
+
+Objective - i]To Configure FTP Services on server 
+	ii]To Upload file into the FTP Seaves from Remote PC
+	iii]To download a file from the FTP server from Remote PC
+
+Procedure - 
+
+Step-1 Open cisco packet tracer desktop & Select the devices given below.
+
+	S.NO	Device Name	Qty
+	1	PT-Switch		1
+	2	Router(1841)	1
+	3	Server-PT		1
+	4	PC		2
+
+Step-2 IP Address Table
+
+	Sr.NO	Device	IP Address	       Default Gateway
+	1	PC0	192.168.1.2	       192.168.1.1
+	2	PC1	192.168.1.3	       192.168.1.1
+	3	Server	192.168.2.2	       192.168.2.1
+
+Step-3 Then create Network topology,use an automatic Connecting cable to Connect the devices with others 
+
+Step-4 Assign the IP address according to IP address table
+
+Step-5  (Configuring router 0)
+	i] click on router & go to config.
+	ii] Configure fastethernet 0/0 by Assigning IP address as 192.168.1.1 & Subnet mask as 255.255.255.0 & turn on port status.
+	iii] Configure fastethernet 0/1 by Assigning IP address as 192.168. 2.1 & subnet mask as 255.255.255.0 & turn on port status.
+
+Step-6 (Configuring Server 0)
+	i]click on served & go to the config & assign name to the server - FTP server. 
+	ii] Then go to the services of server & select the FTP Services & open FTP Services.
+	iii]Go to user Setup & create a username and password, username-cisco1 password-Admin. 
+	[iv] Select all the permissions (write, read, Rename, list) & add the user.
+
+Step-7 Checking Connections from PC0 to the Server or other Host in the network using ping Command in Command prompt of PC0. 
+	i]Create File on names hello.txt so click on PC0 then go to text editor & create file & save this file(hello.txt)
+	ii] then again go to the Command prompt of PC0 & write Command 
+	-G/FTP 192.168.2.2
+	-username -cisco1 
+	-password - Admin
+	→put hello.txt 
+	verifying this file transfer using dir command. 
+	iv]Reading (downloading) the file named hello.txt present in FTP server From PC1 Using get2.txt command & verifying this file transfer
+	using dir command.
+
+	
+Experiment-12
+
+Aim: To configure DHCP(Dynamic Host Configuration Protocol) on router in cisco packet Tracer.
+
+Objective: To assign dynamic IP address to host system deployed in the network
+
+Procedure:
+Step 1- Select the devices given below
+	S.NO	Device Name	Qty  
+	1	PC		5
+	2	Laptop		4
+	3	Switch		2
+	4	Router		1
+
+Step 2- A Network Topology is created in the cisco packet tracer which include 1 router, 2 switch 5 PC &
+            4 laptop
+
+Step 3- Click on router & open CLI then configure router are as follows
+	Router>enable
+	Router# config t
+	Router(config)# interface f0/0
+	Router(config-if)# ip address 192.168.1.1 255.255.255.0
+	Router(config-if)# no shutdown
+	Router(config-if)#do write memory
+	Router(config-if)#ip dhcp pool net1
+	Router(dhcp-config)# network 192.168.1.1 255.255.255.0
+	Router(dhcp-config)# exit
+	Router(dhcp-config)# interface f0/1
+	Router(config-if)# ip address 192.168.2.1 255.255.255.0
+	Router(config-if)# no shutdown
+	Router(config-if)#do write memory
+	Router(config-if)#ip dhcp pool net2
+	Router(dhcp-config)# network 192.168.2.1 255.255.255.0
+	Router(dhcp-config)# exit
+	Router(config)# exit
+
+Step 4- After router configuration click on PC1 go to desktop & click on IP Configuration
+             then select the dhcp option & it will show result & do same for all PC's & Laptop
+             then check IP address, subnet Mask & default gateway of all connected devices
+             it will show result
+
+Experiment-13
+
+Aim: To configure RIP(routing information protocol) using cisco packet tracer
+
+Objectives: i] Configure router using basic interface configuration commands
+	ii] Enable RIP
+	iii]Verify the RIP configuration
+
+Procedure: 
+
+Step 1- Select devices given below
+
+	S.NO	Device Name	Quantity
+	1	PC		4
+	2	Switch-PT		2
+	3	Router-PT		2
+
+Step 2- A network Topology is created in the cisco packet tracer
+
+Step 3- Now configure PC by assigning IP Address
+
+	Sr.No	Device	IP Address		Default gateway
+	1	PC0	192.168.1.2		192.168.1.1
+	2	PC1	192.168.1.3		192.168.1.1
+	3	PC2	192.168.2.2		192.168.2.1
+	4	PC3	192.168.2.3		192.168.2.1
+
+Step 4- then Configure Router 0 So click on router & Configure its Interface  So go to the router & click on Config & Configure fastethernet 0/0 by 
+             IP-address 192.168.1.1 & on port then Same on Router 1 go to the config of Router1 & then select fastethernet 0/1 & assign ip address 192.168.2.1
+            & on port status
+
+Step 5- Configure the IP address in serial ports according to given table
+
+	Device	Port	IP Address
+	Router0	Serial2/0    192.168.3.1
+	Router1	Serial2/0	192.168.3.2
+
+Step 6- After assigning IP address to Serial port then set the clock 64000 & then click on Setting & Save this Configuration. 
+             Then Same Step do on Router 1 Assign Serial port address 192.168.3.2 & set the clock - not Set & on the port status.
+
+Step 7- Now try to send packets from PC0 to PC2 it will show the result failed so we use RIP
+
+Step 8- 	Click on Router0 & go to the config & select RIP then add all three different network
+	192.168.1.0	        add
+	192.168.2.0	        add
+	192.168.3.0        add
+             	Click on add again go to setting & save this
+	Same Thing do on Router1. So go to the config & click on RIP then add all three network
+	192.168.1.0	        add
+	192.168.2.0        add
+	192.168.3.0        add
+
+Step 9-	Then try to send the packet from PC0 to PC2 in this step it work successful then try to send packet from all routs
+	Which are available in the network all work successfully.
+
+Step 10-	Start the simmulation in this step all packets sends successfully & send acknowledgement to sender.
+
+Experiment-14
+
+Aim: Static Routing Configuration in cisco packet tracer
+
+Objectives: Configuring static routing with 2 router & 2 switch using CLI command
+
+Procedure: 
+Step 1- Select the devices given below
+
+	SR.NO		Device Name	Quantity
+	1		PC		4
+	2		Switch-PT		2
+	3		Router-PT		2
+
+Step 2- A network topology is created in the cisco packet tracer
+
+Step 3- Now to configure PC by assigning IP address 
+
+	S.NO	Device	IP Address               Default gateway
+	1	PC0	192.168.1.2	              192.168.1.1
+	2	PC1	192.168.1.3	              192.168.1.1
+	3	PC2	192.168.2.2              192.168.2.1
+	4 	PC3	192.168.2.3              192.168.2.1
+
+Step 4- Configure router0 in static way click on router & open CLI & start configuration
+
+router>enable
+router#config t
+Router(config)#interface f0/0
+Router(config-if)#ip address 192.168.1.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface serial 2/0
+Router(config-if)#IP address 10.0.0.1 255.0.0.0
+Router(config-if)#no shutdown
+Router(config-if)#bandwidth
+Router(config-if)#exit
+Router(config)#do show IP route
+Router(config)#ip route 192.168.2.0  255.255.255.0  10.0.0.2
+Router(config)#do show IP route
+
+Step 5- do same thing on router click on router 1 & open CLI & start configuration
+
+router>enable
+router#config t
+Router(config)#interface f0/0
+Router(config-if)#ip address 192.168.2.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface serial 2/0
+Router(config-if)#IP address 10.0.0.2 255.0.0.0
+Router(config-if)#no shutdown
+Router(config-if)#bandwidth
+Router(config-if)#exit
+Router(config)#do show IP route
+Router(config)#ip route 192.168.1.0  255.255.255.0  10.0.0.1
+Router(config)#do show IP route
+
+Step 6- Then try to send packet from PC0 to PC1, PC2, PC3 router 0, router 1  it will show result successfully
+
+Experiment-15
+
+Aim: Wireless Router configuration in cisco packet tracer
+
+Objectives: 1) To configure router for wireless communication
+	 2) To configure all connected wireless devices & check communication
+	     between router & all connected devices.
+
+Procedure: Select the devices given below
+
+Step 1- 
+	Sr.No	Device Name	Quantity
+                	1	PC		4
+ 	2	Wireless Router	1
+		[WRT300N]
+
+Step 2- A network topology is created in cisco packet tracer
+
+Step 3-  i] Click on PC0 then go to the physical mode. Then off the switch & delete
+                the default module & drag the new model WRT300N & drop this model
+                on deleted place then again on the button
+              ii] Do same process on PC1, PC2, PC3
+
+Step 4-   Then Assign IP address to all PC's so click on PC0 then select the DHCP 
+               option & IP Address, subnet mask, & default gateway are assign automatically
+               do same steps for PC1, PC2, PC3.
+
+Step 5- i] Click on PC0 then go to web brower In URL type - Router IP address 192.168
+                .0.1 then enter & give username-admin & password-admin then click ok
+            ii] then click on wireless & set the network name- Mynetwork & save this changes.
+
+Step 6- i] Click on wireless router0 then go to config Mode of router then select the wireless
+	option.
+            ii] Then click on WEP Authentication & assign Key-0123456789
+
+Step 7- i] Click on PC0 then go to desktop & select PC wireless option then open it
+                click on connect option then refresh again click on connect & assign WEP
+                key-0123456789 click on connect
+             ii] Do the same step for PC1, PC2, PC3
+
+Step 8- Then wireless configuration is ready so check the it work properly or not by using ping
+            command then it will show result.
+		
+
+Experiment-16
+
+Aim: Van[Virtual Local Area Network) Configuration in cisco packet tracer
+
+Apparatus: cisco packet tracer software
+
+Procedure: 
+
+Step 1- Select the devices given below
+
+	Sr.No	Device Name	Quantity 
+	1	PC		6
+	2	Switch		1
+
+Step 2- A network topology is created in cisco packet tracer 
+
+Step 3- Now to configure PC by assigning IP address 
+
+            	S.NO	DEVICE		IPADDRESS	DEFAULT GATEWAY
+            	1	PC0		192.168.10.2	192.168.10.1
+	2	PC1		192.168.10.3	192.168.10.1
+	3	PC2		192.168.10.4	192.168.10.1
+	4	PC3		192.168.10.5	192.168.10.1
+	5	PC4		192.168.10.6	192.168.10.1
+	6	PC5		192.168.10.7	192.168.10.1
+
+Step 4- Click on switch & open CLI & start configuration.
+
+Switch> enable 
+Switch # Config t
+Switch(config)# vlan 10
+Switch(config-vlan) name HR 
+Switch(config-vlan) exit
+Switch(config)# vlan 20 
+Switch(config-vlan) name IT
+Switch(config-vlan) exit 
+Switch(config)# vlan 30
+Switch(config-vlan) name Info
+Switch(config-vlan) exit
+Switch(config)# exit
+Switch# show Vlan. 
+Switch# configure.
+Switch(config)# interface f0/l 
+Switch(config-if)# switchport mode Access
+Switch(config-if)# switchport access vlan 10
+Switch(config-if)# exit 
+Switch(config)# interface f0/2
+Switch(config-if)# switchport mode Access
+Switch(config-if)# switchport access Vlan 10
+Switch(config-if)# exit 
+Switch(config)# interface f0/3
+Switch(config-if)# switchport mode Access 
+Switch(config-if)# switchport access vlan 20
+Switch(config-if)# exit
+Switch(config)# interface f0/4 
+Switch(config-if)# switchport mode Access
+Switch(config-if)# switchpost access vlan 20 
+Switch(config)#exit.
+Switch(config)# interface f0/5 
+Switch(config-if)# switchport mode Access
+Switch(config-if)# switchport access vlan 30
+Switch(config-if)# exit
+Switch(config)# interface f0/6
+Switch(config-if)# switchpost mode access 
+Switch(config-if)# switchport access vlan 30 
+Switch(config-if)# exit.
+Switch(config) # do write memory
+
+Step 5- click on PC0 then open Command prompt by using Ping command check the vlan10 Communicate 
+            with vlan20 or vlan30 Check all it will show Result.
+
+
+Experiment-17
+
+Aim: Performing an Initial Switch Configuration
+
+Objectives
+ Perform an initial configuration of a Cisco Catalyst 2960 switch.
+
+Background / Preparation
+In this activity, you will configure these settings on the customer Cisco Catalyst 2960 switch: 
+ Host name 
+ Console password
+ vty password
+ Privileged EXEC mode password
+ Privileged EXEC mode secret  IP address on VLAN1 interface 
+ Default gateway
+Note: Not all commands are graded by Packet Tracer.
+
+Step 1: Configure the switch host name.
+a. From the Customer PC, use a console cable and terminal emulation software to connect to the console
+of the customer Cisco Catalyst 2960 switch.
+b. Set the host name on the switch to CustomerSwitch using these commands.
+Switch>enable
+Switch#configure terminal
+Switch(config)#hostname CustomerSwitch
+
+Step 2: Configure the privileged mode password and secret.
+a. From global configuration mode, configure the password as cisco. 
+CustomerSwitch(config)#enable password cisco
+b. From global configuration mode, configure the secret as cisco123. 
+CustomerSwitch(config)#enable secret cisco123
+
+Step 3: Configure the console password.
+a. From global configuration mode, switch to configuration mode to configure the console line.
+CustomerSwitch(config)#line console 0
+b. From line configuration mode, set the password to cisco and require the password to be entered at
+login.
+CustomerSwitch(config-line)#password cisco
+CustomerSwitch(config-line)#login
+CustomerSwitch(config-line)#exit
+
+Step 4: Configure the vty password.
+a. From global configuration mode, switch to the configuration mode for the vty lines 0 through 15.
+CustomerSwitch(config)#line vty 0 15
+b. From line configuration mode, set the password to cisco and require the password to be entered at login.
+CustomerSwitch(config-line)#password cisco
+CustomerSwitch(config-line)#login
+CustomerSwitch(config-line)#exit
+
+Step 5: Configure an IP address on interface VLAN1.
+From global configuration mode, switch to interface configuration mode for VLAN1, and assign the IP address 192.168.1.5 with the subnet mask of 255.255.255.0.
+CustomerSwitch(config)#interface vlan 1
+CustomerSwitch(config-if)#ip address 192.168.1.5 255.255.255.0
+CustomerSwitch(config-if)#no shutdown
+CustomerSwitch(config-if)#exit
+
+Step 6: Configure the default gateway.
+a. From global configuration mode, assign the default gateway to 192.168.1.1.
+CustomerSwitch(config)#ip default-gateway 192.168.1.1
+b. Click the Check Results button at the bottom of this instruction window to check your work.
+
+Step 7: Verify the configuration.
+The Customer Switch should now be able to ping the ISP Server at 209.165.201.10. The first one or two pings may fail while ARP converges.
+CustomerSwitch(config)#end
+CustomerSwitch#ping 209.165.201.10
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 209.165.201.10, timeout is 2 seconds:
+..!!!
+Success rate is 60 percent (3/5), round-trip min/avg/max = 181/189/197 ms
+CustomerSwitch#
+
+Reflection
+a. What is the significance of assigning the IP address to the VLAN1 interface instead of any of the Fast Ethernet interfaces?
+b. What command is necessary to enforce password authentication on the console and vty lines?
+c. How many gigabit ports are available on the Cisco Catalyst 2960 switch that you used in the activity?
+
+
+
+
