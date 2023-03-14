@@ -1,0 +1,779 @@
+1.Explain the environmental setup of selenium web driver? 
+
+2.Write a script to perform actions on a web browser [Min Max]
+
+package demo1;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class first {
+
+public static void main(String[] args) throws InterruptedException{
+
+System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+WebDriver driver = new ChromeDriver(); 
+Thread.sleep(2000);driver.manage().window().maximize();
+driver.navigate().to("https://www.facebook.com/login/");
+driver.navigate().refresh(); 
+String title=driver.getTitle();
+System.out.println(title);
+driver.close();
+}
+}
+
+
+3.Write a script for changing the position of browser & also change the dimensions of browser
+
+package demo1;
+
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium. WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class changeposition {
+public static void main(String[] args) {
+	System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+	WebDriver driver=new ChromeDriver();
+	driver.get("https://www.google.com/");
+	driver.manage().window().maximize();
+	Point P=new Point(100,100);
+	driver.manage().window().setPosition(P);
+	driver.navigate().back(); 
+	Dimension d=new Dimension(400,200); 
+	driver.manage().window().setSize(d);
+	driver.close();
+	}
+}
+
+4.Write a script to print the title and current URL of the webpage? 
+
+package demo1;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class fourth{
+public static void main(String[] args) throws InterruptedException{
+	System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe"); 
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://www.google.com/");
+	Thread.sleep(2000);
+	driver.manage().window().maximize(); 
+	System.out.println(driver.getCurrentUrl());
+	String title=driver.getTitle();
+	System.out.println(title);
+	driver.close();
+    }
+}
+
+5.Write a script for handling the web elements available on google URL 
+
+package demo1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium. WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Googleurl{
+public static void main(String[] args) throws InterruptedException{
+System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe"); 
+WebDriver driver =new ChromeDriver(); 
+driver.get("https://www.google.com/");
+driver.manage().window().maximize(); 
+driver.findElement(By.linkText("Gmail")).click();
+driver.navigate().back(); 
+driver.findElement(By.linkText("Images")).click();
+driver.navigate().back();
+driver.findElement(By.name("q")).sendKeys("123");
+driver.close();
+	}
+}
+
+6.Write a script for simple login to Facebook 
+
+package demo1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium. WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class loginfb{
+public static void main(String[] args) throws InterruptedException{
+System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe"); 
+WebDriver driver =new ChromeDriver();
+driver.get("https://www.facebook.com/");
+driver.manage().window().maximize(); 
+driver.findElement(By.name("email")).sendKeys("tejasshinde028@gmail.com");
+driver.findElement(By.name("pass")).sendKeys("tejasshinde2803"); 
+driver.findElement(By.name("login")).click();
+	}
+}
+
+7.Write a script for Facebook signup 
+
+package demo1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium. WebDriver; 
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Signupfb {
+	public static void main(String[] args) throws InterruptedException{
+	System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe"); 
+	WebDriver driver =new ChromeDriver();
+	driver.get("https://en-gb.facebook.com/signup");
+	driver.manage().window().maximize();
+	driver.findElement(By.name("firstname")).sendKeys("TEJAS");
+	driver.findElement(By.name("lastname")).sendKeys("SHINDE");
+	driver.findElement(By.name("reg_email__")).sendKeys("abc123@gmail.com");
+	driver.findElement(By.name("reg_email_confirmation__")).sendKeys("abc123@gmail.com");	
+	driver.findElement(By.name("reg_passwd__")).sendKeys("password");
+	driver.findElement(By.id("day")).sendKeys("28");
+	driver.findElement(By.id("month")).sendKeys("03");
+	driver.findElement(By.id("year")).sendKeys("2004");
+	driver.findElement(By.xpath("//input[ @value='2']")).click();
+	driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div[2]/div/div[2]/div/div/div[1]/form/div[1]/div[11]/button")).click();
+	}
+}
+
+8.Write a script to fill submit the contact form [Datta Kala Institute] 
+
+package demo1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class contactform {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe"); 
+		 WebDriver driver =new ChromeDriver();
+		 driver.get("https://www.dattakala.edu.in/contact.html");
+		 driver.manage().window().maximize();
+		 driver.findElement(By.name("full_name")).sendKeys("tejas");
+		 driver.findElement(By.name("email")).sendKeys("tejasshinde028@gmail.com");
+		 driver.findElement(By.name("telephone")).sendKeys("7028430319");
+		 driver.findElement(By.name("subject")).sendKeys("ST");
+		 driver.findElement(By.name("comments")).sendKeys("hii welcome");
+		 driver.findElement(By.className("wpcf7-submit")).click();
+	}
+
+}
+
+9.Write a script to print no of links and URL [text of URL] of a link on a web page 
+
+package demo1;
+
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class totalnooflinks {
+	public static void main(String[] args)throws InterruptedException {
+	System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+	WebDriver driver =new ChromeDriver();
+	driver.get("https://www.google.com/");
+	driver.manage().window().maximize();
+	Thread.sleep(2000);
+	List<WebElement>abc=driver.findElements(By.tagName("a"));
+	int num = abc.size();
+	System.out.println(num);
+	for(int i=0;i<=num;i++) {
+		String c = abc.get(i).getText();
+		Thread.sleep(1000);
+		System.out.println(c);
+		}
+	}
+		
+}
+
+10. Write a script how to handle web element list box
+
+package demo1;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class listbox {
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+		 WebDriver driver =new ChromeDriver();
+		driver.get("https://techcanvass.com/Examples/multi-select.html");
+		
+		WebElement listbox = driver.findElement(By.id("multiselect"));
+		Select s = new Select(listbox);
+		
+		s.selectByIndex(0);  
+		s.selectByIndex(1);
+		s.selectByIndex(2);
+		Thread.sleep(1000);
+		s.deselectByIndex(0);
+		s.deselectByIndex(1);
+	    
+		List <WebElement>b = s.getOptions();
+		int c =b.size();
+		System.out.println(c);
+		
+		for(int i=0;i<=c-1;i++)
+		{
+		 String d1 =b.get(i).getText();
+		 System.out.println(d1);
+		}
+		WebElement d =s.getFirstSelectedOption();
+		String e = d.getText();
+		System.out.println(e);
+	}
+
+}
+
+11. Write a script to print the content of the list in sorted order.
+
+package demo1;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class sortedlist {
+
+	public static void main(String[] args) throws InterruptedException {
+	System.setProperty("webdriver.chrome.driver", "E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+	WebDriver driver =new ChromeDriver();
+	driver.get("https://techcanvass.com/Examples/multi-select.html");
+		
+	WebElement listbox = driver.findElement(By.id("multiselect"));
+	Select s = new Select(listbox);
+
+	List<WebElement> allOptions = s.getOptions();
+	ArrayList<String> allText=new ArrayList<String>();
+		
+	for(int i=0;i<allOptions.size();i++) {
+		String text = allOptions.get(i).getText();
+		allText.add(text);
+	}
+		Collections.sort(allText);
+		for(String p:allText) {
+			System.out.println(p);
+		}
+		driver.close();
+		
+	}
+
+}
+
+12. Write a script for how to handle I Frames
+
+package demo1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Iframe {
+	public static void main(String[] args) throws InterruptedException {
+	System.setProperty("webdriver.chrome.driver", "E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+	WebDriver driver =new ChromeDriver();
+	driver.get("https://www.selenium.dev/selenium/docs/api/java/index.html?org/openqa/selenium/package-summary.html");
+	driver.manage().window().maximize();
+	Thread.sleep(2000);
+	driver.switchTo().frame(0);
+	driver.findElement(By.linkText("org.openqa.selenium")).click();
+	driver.switchTo().parentFrame();
+	driver.switchTo().frame(2);
+	driver.findElement(By.linkText("By.Remotable")).click();
+	Thread.sleep(3000);
+	driver.close();
+    }
+}
+
+13. Write a script for how to handle windows popup[multiple windows]
+
+package demo1;
+import java.util.Iterator;
+import java.util.Set;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class windowspopup {
+
+	public static void main(String[] args) throws InterruptedException{
+		System.setProperty("webdriver.chrome.driver", "E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.get("https://demo.guru99.com/popup.php");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		driver.findElement(By.linkText("Click Here")).click();
+		
+		Thread.sleep(2000);
+		
+		Set<String> s= driver.getWindowHandles();
+		Iterator<String> it = s.iterator();
+		
+		it.next();
+		String w2nd= it.next();
+		driver.switchTo().window(w2nd);
+		Thread.sleep(2000);
+		driver.findElement(By.name("emailid")).sendKeys("tejasshinde028@gmail.com");
+		Thread.sleep(2000);
+		driver.findElement(By.name("btnLogin")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.linkText("Click Here")).click();
+		}
+
+}
+
+
+14. Write a script for gmail account login
+
+package demo1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class gmaillogin {
+
+	public static void main(String[] args) throws InterruptedException{
+
+		 System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+		 WebDriver driver =new ChromeDriver();
+		 driver.get("https://accounts.google.com/");
+		 driver.manage().window().maximize();
+		 
+		 WebElement email= driver.findElement(By.id("identifierId"));
+		 email.sendKeys("tejasshinde028@gmail.com");
+		 driver.findElement(By.xpath("//*[@id=\"identifierNext\"]/div/button/span")).click();
+	}
+
+}
+
+
+
+15. Write a script for how to handle alert & popup
+
+package demo1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class alert {
+	public static void main(String[] args) throws InterruptedException{
+		System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.get("https://demo.guru99.com/test/delete_customer.php");
+		driver.manage().window().maximize();
+		Thread.sleep(1000);
+		driver.findElement(By.name("cusid")).sendKeys("123");
+		Thread.sleep(1000);
+		driver.findElement(By.name("submit")).click();
+		Thread.sleep(2000);
+		driver.switchTo().alert().accept();
+		Thread.sleep(2000);
+		driver.switchTo().alert().dismiss();
+		driver.close();
+	}
+}
+
+
+16. Write a script for how to handle scroll bar
+
+package demo1;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class scrollbar {
+	public static void main(String[] args) throws InterruptedException{
+	System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+	WebDriver driver =new ChromeDriver();
+	driver.get("http://flipkart.com");
+	driver.manage().window().maximize();
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	Thread.sleep(1000);
+	js.executeScript("window.scrollBy(0,-1000)");
+	}
+
+}
+
+17. Write a radio button for selecting radio buttons & checkbox one by one
+
+package demo1;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Radio {
+
+		public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.get("https://demo.guru99.com/test/radio.html");
+		driver.manage().window().maximize();
+			
+			List <WebElement> a = driver.findElements(By.name("webform"));
+			int num = a.size(); 
+			for(int i=0;i<=num-1;i++)
+			{
+				a.get(i).click();
+				Thread.sleep(1000);
+			}
+		}
+
+	
+
+}
+
+18. @Test
+
+package demo1;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+
+public class classname{
+@Test
+public void verifyTitle() {
+
+	Assert.assertEquals("Yahoo","Yahoo");
+}
+@Test
+public void abcd() {
+
+	Assert.assertEquals("Gmail", "Gmail");
+}
+@Test
+public void abc() {
+
+	Assert.assertEquals("Gmail", "Gmail");
+}
+}
+
+19. TestNG Priority
+
+package TestNG;
+
+import org.testng.annotations.Test;
+
+public class classname1 {
+
+@Test(priority=2)
+public void verifyTitle() {
+System.out.println("Verify Title method");
+}
+
+@Test(priority=1)
+public void abcd() {
+System.out.println("abcd method"); }
+
+@Test(priority=3)
+public void abc() {
+System.out.println("abc method"); }
+}
+
+20. Depends on methods
+
+package TestNG;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class classname2 {
+  @Test
+  public void login() {
+		  System.out.println("Login successfully");
+		  }
+		  @Test
+		  public void logout() {
+		  System.out.println("Logout successfully");
+		  }
+		  @Test(dependsOnMethods= {"advancedSearch"})
+		  public void search() {
+		  System.out.println("Search successfully");
+		  }
+		  @Test
+		  public void advancedSearch() {
+		  Assert.assertEquals("Gmail","Gmail");
+		  }
+  }
+
+
+
+21. @Before Method @After Method
+
+package TestNG;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class classname3 {
+@BeforeMethod
+public void login() {
+	System.out.println("Login successfully");
+}
+@AfterMethod
+public void logout() {
+	System.out.println("Logout successfully");
+}
+@Test(priority=2)
+public void addProduct() {
+	System.out.println("Add product successfully");
+}
+@Test(priority=1)
+public void addVendor() {
+	System.out.println("Add vendor successfully");
+}
+@Test(priority=3)
+public void addCurrency() {
+	System.out.println("Add currency successfully");
+}
+}
+
+22. @Before Class @After Class
+
+package TestNG;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+public class classname4 {
+@BeforeClass
+public void login(){
+System.out.println("Login successfully");
+}
+@AfterClass
+public void logout() {
+System.out.println("Logout successfully");
+}
+@Test(priority=2)
+public void addProduct() {
+System.out.println("Add product successfully");
+}
+@Test(priority=1)
+public void addVendor() {
+System.out.println("Add vendor successfully");
+}
+@Test(priority=3)
+public void addCurrency() {
+System.out.println("Add currency successfully");
+}
+}
+
+23. @Before Test @After Test
+
+package TestNG;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+
+public class Priority {
+	  @BeforeTest
+	  public void login() {
+	  System.out.println("Test Login successfully");
+	  }
+	  @AfterTest
+	  public void logout() {
+	  System.out.println("Test Logout successfully");
+	  }
+	  @Test(priority=2)
+	  public void verifyTitle() {
+	  System.out.println("Verify Title method");
+	  }
+
+	  @Test(priority=1)
+	  public void abcd() {
+	  System.out.println("abcd method"); 
+	  }
+	  @Test(priority=3)
+	  public void abc() {
+	  System.out.println("abc method");
+	  }
+
+  }
+
+Suite file is:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<test thread-count="5" name="Test">
+<classes>
+<class name="TestNG.DependsOnMethods"/>
+<class name="TestNG.Abc"/>
+<class name="TestNG.Priority"/>
+</classes>
+</test> <!-- Test -->
+</suite> <!-- Suite -->
+
+24. @Before Suite @After Suite
+
+package TestNG;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+public class Priority1 {
+@BeforeSuite
+public void b_suite() {
+System.out.println("This is @BeforeSuite method");
+}
+@AfterSuite
+public void a_suite() {
+System.out.println("This is @AfterSuite method");
+}
+@BeforeTest
+public void login() {
+System.out.println("Test Login successfully");
+}
+@AfterTest
+public void logout() {
+System.out.println("Test Logout successfully");
+}
+@Test(priority=2)
+public void verifyTitle() {
+System.out.println("Verify Title method");
+}
+@Test(priority=1)
+public void abcd() {
+System.out.println("abcd method");}
+
+@Test(priority=3)
+public void abc() {
+System.out.println("abc method");
+}
+
+}
+
+
+Suite file is:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<test thread-count="5" name="Test">
+<classes>
+<class name="TestNG.DependsOnMethods"/>
+<class name="TestNG.Abc"/>
+<class name="TestNG.Priority1"/>
+</classes>
+</test> <!-- Test -->
+</suite> <!-- Suite -->
+
+25. Real Time Example
+
+package TestNG;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+public class AnnotationsTestNG {
+
+private static final String FileUtils = null;
+public WebDriver driver;
+@BeforeSuite
+public void setUp() throws InterruptedException
+{
+	System.setProperty("webdriver.chrome.driver","E:/SOFTWARE/ST & JAVA PRACTICAL/chromedriver.exe");
+	driver=new ChromeDriver();
+	Thread.sleep(2000);
+	System.out.println("The setup process is completed");
+}
+@BeforeTest
+public void profileSetup()
+{
+driver.manage().window().maximize();
+System.out.println("The profile setup process is completed");
+
+}
+@BeforeClass
+public void appSetup()
+{
+driver.get("https://www.facebook.com/");
+System.out.println("The app setup process is completed");
+}
+@BeforeMethod
+public void checkLogin()
+{
+//Here in username and password field(sendKeys) enter your fb username and password
+driver.findElement(By.name("email")).sendKeys("8329080292");
+driver.findElement(By.name("pass")).sendKeys("Sandip@123");
+driver.findElement(By.name("login")).click();
+System.out.println("The login process on facebook test is completed");
+}
+@Test
+public void testCurrentUrl() throws InterruptedException
+{
+String currentUrl= driver.getCurrentUrl();
+Assert.assertEquals(currentUrl, "https://www.facebook.com");
+System.out.println("The url validation test is completed");
+}
+@AfterMethod
+public void screenShot() throws IOException
+{
+File s =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+//Here enter the path of bmp file
+
+File d = new File("C:/Users/User/OneDrive/Pictures/Screenshots/april_batch_screenshot_file.bmp");
+FileUtils.copyFile(s,d);
+}
+@AfterClass
+public void closeUp()
+{
+driver.close();
+
+System.out.println("The close_up process is completed");
+}
+@AfterTest
+public void reportReady()
+{
+System.out.println("Report is ready to be shared, with screenshots of tests");
+}
+@AfterSuite
+public void cleanUp()
+{
+System.out.println("All close up activities completed");
+}
+
+}
+
+
+
+
